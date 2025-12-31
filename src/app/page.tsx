@@ -7,33 +7,33 @@ export default function Home() {
   return (
   <main className="min-h-screen w-full bg-white font-sans">
       {/* Hero con fondo blanco y franja marrón beige */}
-      <section className="relative min-h-screen flex items-center pt-20 pb-4 bg-white">
+  <section className="relative min-h-screen flex flex-col items-center pt-20 pb-4 bg-white">
         {/* Franja marrón beige horizontal */}
-        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 bg-[#eee9e1] h-[55%] md:h-[60%] z-0"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+  <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 bg-[#eee9e1] h-[55%] md:h-[60%] z-0"></div>
+        <div className="container mx-auto px-2 sm:px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Texto */}
-            <div className="p-8 lg:p-12">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 text-black leading-tight">
+            <div className="p-4 sm:p-8 lg:p-12">
+              <h1 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 text-black leading-tight text-center lg:text-left">
                 Llevamos tu música al siguiente nivel
               </h1>
-              <p className="text-base text-gray-800 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-800 mb-6 leading-relaxed text-center lg:text-left">
                 En <span className="font-bold text-yellow-800">SaxoShop</span> te ayudamos a encontrar el saxofón perfecto para tu pasión. Asesoría personalizada, envíos rápidos y la mejor selección de instrumentos.
               </p>
-              <div className="flex gap-4 mt-4">
-                <Link href="/productos" className="inline-block bg-[#7c6043] text-white px-6 py-2.5 text-sm hover:bg-[#5d4630] transition-colors font-medium rounded">Ver Catálogo</Link>
-                <Link href="/contacto" className="inline-block border-2 border-[#7c6043] text-[#7c6043] px-6 py-2.5 text-sm hover:bg-[#7c6043] hover:text-white transition-colors font-medium rounded">Contacto</Link>
+              <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center lg:justify-start">
+                <Link href="/productos" className="inline-block bg-[#7c6043] text-white px-6 py-2.5 text-sm hover:bg-[#5d4630] transition-colors font-medium rounded w-full sm:w-auto text-center">Ver Catálogo</Link>
+                <Link href="/contacto" className="inline-block border-2 border-[#7c6043] text-[#7c6043] px-6 py-2.5 text-sm hover:bg-[#7c6043] hover:text-white transition-colors font-medium rounded w-full sm:w-auto text-center">Contacto</Link>
               </div>
             </div>
             {/* Tarjeta blanca con imagen arriba */}
-            <div className="relative h-[400px] lg:h-[500px] z-20 flex items-center justify-center">
-              <div className="bg-white rounded-xl shadow-xl border-2 border-[#eee9e1] w-full h-full flex flex-col items-center justify-start p-4 -mt-20">
-                <div className="w-full flex justify-center mt-16">
+            <div className="relative h-[260px] xs:h-[320px] sm:h-[400px] lg:h-[500px] z-20 flex items-center justify-center mt-16 sm:mt-20 lg:mt-0">
+              <div className="bg-white rounded-xl shadow-xl border-2 border-[#eee9e1] w-full h-full flex flex-col items-center justify-start p-2 sm:p-4">
+                <div className="w-full flex justify-center mt-16 sm:mt-24">
                   <Image
                     src="/saxo.png"
                     alt="Saxofón dorado"
-                    width={320}
-                    height={320}
+                    width={220}
+                    height={220}
                     className="object-contain rounded-lg libro-rotar"
                     priority
                   />
@@ -45,10 +45,10 @@ export default function Home() {
       </section>
 
       {/* Productos destacados */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-5xl font-extrabold text-center text-black mb-12 font-serif">Saxofones Destacados</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="py-10 sm:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-2 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-black mb-8 sm:mb-12 font-serif">Saxofones Destacados</h2>
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {/* Producto 1 */}
             <div className="bg-[#eee9e1] rounded-2xl shadow-lg p-6 flex flex-col items-center border border-[#e0d6c8] transition-transform hover:-translate-y-2">
               <Image src="/saxo1.png" alt="Saxofón Alto" width={160} height={160} className="mb-6 rounded-lg bg-white p-2" />

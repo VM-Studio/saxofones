@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <nav className="w-full flex items-center justify-between py-6 px-8 bg-[#eee9e1] shadow-md">
       <div className="flex items-center gap-3">
-        <span className="text-2xl font-bold text-yellow-700 tracking-tight">SaxoShop</span>
+  <span className="text-2xl font-bold text-[#7c6043] tracking-tight">SaxoShop</span>
       </div>
   <ul className="flex gap-8 text-lg font-medium font-serif">
         <li>
