@@ -6,11 +6,11 @@ import { useCart } from "./_store/cart";
 export default function Navbar() {
   const items = useCart((state) => state.items);
   return (
-    <nav className="w-full flex items-center justify-between py-6 px-8 bg-[#eee9e1] shadow-md">
-      <div className="flex items-center gap-3">
-  <span className="text-2xl font-bold text-[#7c6043] tracking-tight">SaxoShop</span>
+    <nav className="w-full flex flex-col sm:flex-row items-center justify-between py-4 sm:py-6 px-2 sm:px-8 bg-[#eee9e1] shadow-md">
+      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-0">
+        <span className="text-xl sm:text-2xl font-bold text-[#7c6043] tracking-tight">SaxoShop</span>
       </div>
-  <ul className="flex gap-8 text-lg font-medium font-serif">
+      <ul className="flex gap-4 sm:gap-8 text-base sm:text-lg font-medium font-serif overflow-x-auto whitespace-nowrap w-full sm:w-auto justify-center sm:justify-start">
         <li>
           <Link href="/" className="text-black hover:underline">Inicio</Link>
         </li>

@@ -77,8 +77,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 bg-[#eee9e1]">
+  {/* Testimonios */}
+  <section className="mt-10 sm:mt-16 py-16 bg-[#eee9e1]">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-4xl font-extrabold text-center text-black mb-12 font-serif">Lo que dicen nuestros clientes</h2>
           <div className="grid md:grid-cols-3 gap-12">
