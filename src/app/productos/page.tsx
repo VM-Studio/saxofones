@@ -1,5 +1,5 @@
+import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 const productos = [
   {
@@ -26,20 +26,52 @@ const productos = [
 ];
 
 export default function Productos() {
+  // Paginación simple
+  const pageSize = 2;
+  const [page, setPage] = React.useState(1);
+  const totalPages = Math.ceil(productos.length / pageSize);
+  const paginated = productos.slice((page - 1) * pageSize, page * pageSize);
+
   return (
-  <main className="max-w-6xl mx-auto py-16 px-6 bg-white">
-      <h1 className="text-5xl font-extrabold text-black mb-12 text-center font-serif">Catálogo de Saxofones</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {productos.map((producto) => (
-          <div key={producto.slug} className="bg-[#eee9e1] rounded-2xl shadow-lg p-6 flex flex-col items-center border border-[#e0d6c8] transition-transform hover:-translate-y-2">
-            <Image src={producto.imagen} alt={producto.nombre} width={160} height={160} className="mb-6 rounded-lg bg-white p-2" />
-            <h2 className="text-lg font-bold mb-1 text-black font-serif">{producto.nombre}</h2>
-            <p className="text-sm text-gray-700 mb-3 text-center">{producto.descripcion}</p>
-            <span className="text-base font-bold text-yellow-800 mb-3">{producto.precio}</span>
-            <Link href={`/productos/${producto.slug}`} className="px-4 py-2 bg-[#7c6043] text-white rounded font-medium hover:bg-[#5d4630] transition-colors text-sm">Ver detalles</Link>
+  <main className="max-w-6xl mx-auto py-10 px-2 sm:px-6 bg-drmatte">
+  <h1 className="text-4xl md:text-5xl font-serif font-bold text-drgold text-center mb-4 tracking-wider uppercase">Catálogo de Instrumentos</h1>
+  <h2 className="text-xl md:text-2xl font-serif text-drgold text-center mb-10">Descubre nuestra selección premium de saxofones y vientos</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {paginated.map((producto) => (
+          <div key={producto.slug} className="card p-6 sm:p-8 flex flex-col items-center transition-transform hover:scale-105 bg-drblack rounded shadow-dr border-2 border-drgold">
+            <Image src={producto.imagen} alt={producto.nombre} width={180} height={180} className="mb-6 rounded bg-drblack p-2 border-2 border-drgold object-contain w-full max-w-[180px]" />
+            <h2 className="text-xl font-serif font-bold text-drgold mb-2 uppercase tracking-wide text-center">{producto.nombre}</h2>
+            <p className="text-base text-drgray mb-4 text-center">{producto.descripcion}</p>
+            <span className="text-lg font-bold text-drgold mb-4">{producto.precio}</span>
+            <a href="https://www.mercadolibre.com.ar/" target="_blank" rel="noopener" className="btn px-6 py-2 text-base font-bold border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors w-full text-center">Comprar en Mercado Libre</a>
           </div>
         ))}
       </div>
+      {/* Paginación */}
+      <div className="flex justify-center items-center gap-4 mt-10">
+        <button
+          className="btn px-4 py-2 text-base font-bold border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors w-full sm:w-auto"
+          disabled={page === 1}
+          onClick={() => setPage(page - 1)}
+        >Anterior</button>
+        <span className="text-drgold font-serif text-lg">Página {page} de {totalPages}</span>
+        <button
+          className="btn px-4 py-2 text-base font-bold border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors w-full sm:w-auto"
+          disabled={page === totalPages}
+          onClick={() => setPage(page + 1)}
+        >Siguiente</button>
+      </div>
+      {/* Newsletter al final */}
+      <section className="py-10 flex justify-center items-center">
+        <div className="max-w-xl w-full mx-4 p-6 sm:p-10 bg-drblack rounded shadow-dr border-2 border-drgold flex flex-col items-center">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-drgold text-center mb-4 tracking-wider uppercase">Novedades y Ofertas</h2>
+          <p className="text-base text-drgray text-center mb-8">Suscríbete para enterarte de nuevos productos y ofertas exclusivas de saxos e instrumentos de viento.</p>
+          <form className="w-full flex flex-col gap-4">
+            <input type="email" name="email" required placeholder="Tu email" className="px-4 py-3 rounded border-2 border-drgold bg-drmatte text-drgray focus:outline-none focus:border-drgold2" />
+            <button type="submit" className="btn px-8 py-3 text-lg font-bold border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors w-full">Suscribirme</button>
+          </form>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,41 +1,40 @@
 
 "use client";
 import Link from "next/link";
-import { useCart } from "./_store/cart";
+import { useState } from "react";
 
 export default function Navbar() {
-  const items = useCart((state) => state.items);
+  const [open, setOpen] = useState(false);
   return (
-    <nav className="w-full flex flex-col sm:flex-row items-center justify-between py-4 sm:py-6 px-2 sm:px-8 bg-[#eee9e1] shadow-md">
-      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-0">
-        <span className="text-xl sm:text-2xl font-bold text-[#7c6043] tracking-tight">SaxoShop</span>
+    <nav className="w-full bg-drblack border-b-2 border-drgold shadow-dr">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between px-4 py-4 sm:py-5">
+        {/* Logo / Título */}
+        {/* Logo/título eliminado por pedido del usuario */}
+        {/* Hamburguesa móvil */}
+        <button className="sm:hidden flex flex-col justify-center items-center w-10 h-10 absolute right-4 top-4" onClick={() => setOpen(!open)} aria-label="Abrir menú">
+          <span className={`block w-7 h-1 bg-drgold rounded transition-all duration-300 ${open ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-7 h-1 bg-drgold rounded my-1 transition-all duration-300 ${open ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-7 h-1 bg-drgold rounded transition-all duration-300 ${open ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
+        {/* Links desktop */}
+        <ul className="hidden sm:flex gap-8 text-lg font-serif font-bold text-drgold items-center justify-center w-full">
+          <li><Link href="/" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Inicio</Link></li>
+          <li><Link href="/productos" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Productos</Link></li>
+          <li><Link href="/nosotros" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Nosotros</Link></li>
+          <li><Link href="/novedades" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Novedades</Link></li>
+          <li><Link href="/contacto" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Contacto</Link></li>
+        </ul>
       </div>
-      <ul className="flex gap-4 sm:gap-8 text-base sm:text-lg font-medium font-serif overflow-x-auto whitespace-nowrap w-full sm:w-auto justify-center sm:justify-start">
-        <li>
-          <Link href="/" className="text-black hover:underline">Inicio</Link>
-        </li>
-        <li>
-          <Link href="/productos" className="text-black hover:underline">Productos</Link>
-        </li>
-
-        <li>
-          <Link href="/contacto" className="text-black hover:underline">Contacto</Link>
-        </li>
-        <li className="relative">
-          <Link href="/carrito" className="text-black hover:text-yellow-700 transition-colors flex items-center" aria-label="Carrito">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .96.343 1.09.835l.272 1.02M7.5 14.25A3.75 3.75 0 0 0 11.25 18h3a3.75 3.75 0 0 0 3.75-3.75V6.75A1.5 1.5 0 0 0 16.5 5.25h-9a1.5 1.5 0 0 0-1.5 1.5v7.5z" />
-              <circle cx="9" cy="20" r="1.25" />
-              <circle cx="15" cy="20" r="1.25" />
-            </svg>
-            {items.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-yellow-700 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                {items.length}
-              </span>
-            )}
-          </Link>
-        </li>
-      </ul>
+      {/* Menú móvil */}
+      {open && (
+        <ul className="sm:hidden flex flex-col gap-2 px-6 pb-4 text-lg font-serif font-bold text-drgold bg-drblack border-b-2 border-drgold shadow-dr animate-fade-in">
+          <li><Link href="/" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Inicio</Link></li>
+          <li><Link href="/productos" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Productos</Link></li>
+          <li><Link href="/nosotros" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Nosotros</Link></li>
+          <li><Link href="/novedades" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Novedades</Link></li>
+          <li><Link href="/contacto" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Contacto</Link></li>
+        </ul>
+      )}
     </nav>
   );
 }

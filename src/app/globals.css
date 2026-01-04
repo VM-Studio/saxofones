@@ -1,21 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  font-family: 'Montserrat', 'Open Sans', Arial, Helvetica, sans-serif;
+  background: #111111;
+  color: #E0E0E0;
+}
+
+body {
+  min-height: 100vh;
+  background: #111111;
+  color: #E0E0E0;
+  font-family: 'Montserrat', 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  color: #D4AF37;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+button, .btn {
+  border-radius: 0;
+  border: 2px solid #D4AF37;
+  background: transparent;
+  color: #D4AF37;
+  font-family: 'Montserrat', 'Open Sans', Arial, Helvetica, sans-serif;
+  box-shadow: 0 4px 24px 0 rgba(212, 175, 55, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover, .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px 0 rgba(212, 175, 55, 0.25);
+}
+
+.card {
+  background: #1A1A1A;
+  border: 1px solid #C9A96E;
+  box-shadow: 0 4px 24px 0 rgba(212, 175, 55, 0.15);
+  color: #E0E0E0;
+}
+
+input, textarea {
+  background: #1A1A1A;
+  color: #E0E0E0;
+  border: 1px solid #C9A96E;
+  font-family: 'Montserrat', 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+::-webkit-input-placeholder { color: #E0E0E0; }
+::-moz-placeholder { color: #E0E0E0; }
+:-ms-input-placeholder { color: #E0E0E0; }
+::placeholder { color: #E0E0E0; }
