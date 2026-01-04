@@ -39,7 +39,7 @@ export default function Productos() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {paginated.map((producto) => (
           <div key={producto.slug} className="card p-6 sm:p-8 flex flex-col items-center transition-transform hover:scale-105 bg-drblack rounded shadow-dr border-2 border-drgold">
-            <Image src={producto.imagen} alt={producto.nombre} width={180} height={180} className="mb-6 rounded bg-drblack p-2 border-2 border-drgold object-contain w-full max-w-[180px]" />
+            <Image src={producto.imagen} alt={producto.nombre} width={180} height={180} className="mb-6 rounded bg-drblack p-2 border-2 border-drgold object-contain w-full max-w-45" />
             <h2 className="text-xl font-serif font-bold text-drgold mb-2 uppercase tracking-wide text-center">{producto.nombre}</h2>
             <p className="text-base text-drgray mb-4 text-center">{producto.descripcion}</p>
             <span className="text-lg font-bold text-drgold mb-4">{producto.precio}</span>

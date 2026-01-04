@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "./Footer";
 import "./saxo-animacion.css";
 
 export default function Home() {
@@ -26,7 +25,7 @@ export default function Home() {
               </div>
             </div>
             {/* Carrusel de productos destacados */}
-            <div className="flex items-center justify-center h-[320px] sm:h-[400px] lg:h-[500px] mt-10 lg:mt-0">
+            <div className="flex items-center justify-center h-80 sm:h-100 lg:h-125 mt-10 lg:mt-0">
               {/* TODO: Carrusel de imágenes de productos destacados */}
               <div className="w-full h-full flex items-center justify-center bg-drmatte border-2 border-drgold rounded-none shadow-dr">
                 <span className="text-drgold text-2xl font-serif">Carrusel de productos destacados aquí</span>
@@ -104,8 +103,6 @@ export default function Home() {
           </form>
         </div>
       </section>
-  {/* Footer DR BRASS */}
-  <Footer />
     </main>
   );
 }

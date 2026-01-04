@@ -19,7 +19,7 @@ export default function Navbar() {
         {/* Links desktop */}
         <ul className="hidden sm:flex gap-8 text-lg font-serif font-bold text-drgold items-center justify-center w-full">
           <li><Link href="/" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Inicio</Link></li>
-          <li><Link href="/productos" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Productos</Link></li>
+          <li><span className="px-4 py-2 rounded text-drgold opacity-60 cursor-not-allowed">Productos</span></li>
           <li><Link href="/nosotros" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Nosotros</Link></li>
           <li><Link href="/novedades" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Novedades</Link></li>
           <li><Link href="/contacto" className="px-4 py-2 rounded hover:bg-drmatte hover:text-drblack transition-colors">Contacto</Link></li>
@@ -29,7 +29,7 @@ export default function Navbar() {
       {open && (
         <ul className="sm:hidden flex flex-col gap-2 px-6 pb-4 text-lg font-serif font-bold text-drgold bg-drblack border-b-2 border-drgold shadow-dr animate-fade-in">
           <li><Link href="/" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Inicio</Link></li>
-          <li><Link href="/productos" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Productos</Link></li>
+          <li><span className="block px-4 py-3 rounded text-drgold opacity-60 cursor-not-allowed text-center">Productos</span></li>
           <li><Link href="/nosotros" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Nosotros</Link></li>
           <li><Link href="/novedades" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Novedades</Link></li>
           <li><Link href="/contacto" className="block px-4 py-3 rounded hover:bg-drmatte hover:text-drblack transition-colors text-center" onClick={() => setOpen(false)}>Contacto</Link></li>
