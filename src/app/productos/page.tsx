@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import Image from "next/image";
 
 const productos = [
@@ -28,7 +29,7 @@ const productos = [
 export default function Productos() {
   // Paginación simple
   const pageSize = 2;
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
   const totalPages = Math.ceil(productos.length / pageSize);
   const paginated = productos.slice((page - 1) * pageSize, page * pageSize);
 
