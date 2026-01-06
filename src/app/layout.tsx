@@ -54,7 +54,6 @@ export default function RootLayout({
           <Navbar />
         </div>
         {children}
-        {/* Footer global DR BRASS */}
         <Footer />
       </body>
     </html>
