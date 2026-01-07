@@ -1,46 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+let isConnected: boolean = false
 
-interface MongooseCache {
-  conn: typeof mongoose | null;
-  promise: Promise<typeof mongoose> | null;
+const dbConnect = async () => {
+    mongoose.set('strictQuery',true)
+    if(!process.env.MONGODB_URI){
+        return console.log('MONGODB_URL not found')}
+
+    if(isConnected){
+       return ;
+    }
+    try {
+        await mongoose.connect(process.env.MONGODB_URI,{
+            dbName:'drbrass',
+        })
+        isConnected = true 
+        console.log('MongoDB connected')
+    } catch (error) {
+        console.log(error)
+    }
 }
-
-declare global {
-  var mongoose: MongooseCache | undefined;
-}
-
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
-async function dbConnect(): Promise<typeof mongoose> {
-  if (cached!.conn) {
-    return cached!.conn;
-  }
-
-  if (!cached!.promise) {
-    const opts = {
-      bufferCommands: false,
-    };
-
-    cached!.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      console.log('✅ Conectado a MongoDB');
-      return mongoose;
-    });
-  }
-
-  try {
-    cached!.conn = await cached!.promise;
-  } catch (e) {
-    cached!.promise = null;
-    throw e;
-  }
-
-  return cached!.conn;
-}
-
-export default dbConnect;
+export default dbConnect

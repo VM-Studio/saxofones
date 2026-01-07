@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Product, CreateProductInput, CATEGORIAS, CONDICIONES } from '@/types/product';
+import { ImageUploader } from '@/components/admin/ImageUploader';
+import { MultiImageUploader } from '@/components/admin/MultiImageUploader';
 
 interface ProductFormProps {
   product?: Product;
@@ -47,9 +50,6 @@ export function ProductForm({ product, categorias, condiciones }: ProductFormPro
 
   // Estado para tags
   const [newTag, setNewTag] = useState('');
-
-  // Estado para imágenes adicionales
-  const [newImagen, setNewImagen] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -105,23 +105,6 @@ export function ProductForm({ product, categorias, condiciones }: ProductFormPro
     setFormData((prev) => ({
       ...prev,
       tags: prev.tags?.filter((t) => t !== tag),
-    }));
-  };
-
-  const addImagen = () => {
-    if (newImagen && !formData.imagenes?.includes(newImagen)) {
-      setFormData((prev) => ({
-        ...prev,
-        imagenes: [...(prev.imagenes || []), newImagen],
-      }));
-      setNewImagen('');
-    }
-  };
-
-  const removeImagen = (url: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      imagenes: prev.imagenes?.filter((img) => img !== url),
     }));
   };
 
@@ -402,62 +385,24 @@ export function ProductForm({ product, categorias, condiciones }: ProductFormPro
       </div>
 
       {/* Imágenes */}
-      <div className="bg-zinc-800 rounded-xl p-6 border border-zinc-700 space-y-4">
+      <div className="bg-zinc-800 rounded-xl p-6 border border-zinc-700 space-y-6">
         <h2 className="text-xl font-bold text-white mb-4">Imágenes</h2>
 
-        <div>
-          <label className="block text-zinc-300 text-sm font-medium mb-2">
-            Imagen Principal * (URL)
-          </label>
-          <input
-            type="url"
-            name="imagenPrincipal"
-            value={formData.imagenPrincipal}
-            onChange={handleChange}
-            required
-            placeholder="https://ejemplo.com/imagen.jpg"
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-lg border border-zinc-600 focus:border-amber-500 focus:outline-none"
-          />
-        </div>
+        {/* Imagen Principal */}
+        <ImageUploader
+          label="Imagen Principal"
+          value={formData.imagenPrincipal || ''}
+          onChange={(url) => setFormData((prev) => ({ ...prev, imagenPrincipal: url }))}
+          required
+        />
 
-        <div>
-          <label className="block text-zinc-300 text-sm font-medium mb-2">
-            Imágenes Adicionales
-          </label>
-          <div className="flex gap-2 mb-2">
-            <input
-              type="url"
-              value={newImagen}
-              onChange={(e) => setNewImagen(e.target.value)}
-              placeholder="https://ejemplo.com/imagen.jpg"
-              className="flex-1 bg-zinc-700 text-white px-4 py-2 rounded-lg border border-zinc-600 focus:border-amber-500 focus:outline-none"
-            />
-            <button
-              type="button"
-              onClick={addImagen}
-              className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-4 py-2 rounded-lg transition-colors"
-            >
-              Agregar
-            </button>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {formData.imagenes?.map((url) => (
-              <div
-                key={url}
-                className="flex items-center gap-2 bg-zinc-700 px-3 py-1 rounded-full text-sm text-zinc-200"
-              >
-                <span className="truncate max-w-[200px]">{url}</span>
-                <button
-                  type="button"
-                  onClick={() => removeImagen(url)}
-                  className="text-red-400 hover:text-red-300"
-                >
-                  ×
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Imágenes Adicionales */}
+        <MultiImageUploader
+          label="Imágenes Adicionales (galería)"
+          value={formData.imagenes || []}
+          onChange={(urls) => setFormData((prev) => ({ ...prev, imagenes: urls }))}
+          maxImages={10}
+        />
       </div>
 
       {/* Enlaces Externos */}
