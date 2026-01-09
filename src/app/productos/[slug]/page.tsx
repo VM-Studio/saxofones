@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProductBySlug, getFeaturedProducts } from '@/actions/products';
+import { getProductBySlugStatic, getFeaturedProductsStatic } from '@/actions/products-static';
 import { CATEGORIAS, CONDICIONES } from '@/types/product';
 import type { Metadata } from 'next';
+import { ProductGallery } from '@/components/ProductGallery';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -12,7 +13,7 @@ interface PageProps {
 // Generar metadata dinámica para SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const result = await getProductBySlug(slug);
+  const result = await getProductBySlugStatic(slug);
 
   if (!result.success || !result.data) {
     return {
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProductoDetallePage({ params }: PageProps) {
   const { slug } = await params;
   
-  const result = await getProductBySlug(slug);
+  const result = await getProductBySlugStatic(slug);
 
   if (!result.success || !result.data) {
     notFound();
@@ -46,7 +47,7 @@ export default async function ProductoDetallePage({ params }: PageProps) {
   const producto = result.data;
 
   // Obtener productos relacionados (destacados)
-  const relacionadosResult = await getFeaturedProducts(4);
+  const relacionadosResult = await getFeaturedProductsStatic(4);
   const relacionados = relacionadosResult.success
     ? relacionadosResult.data?.filter((p) => p._id !== producto._id).slice(0, 3) || []
     : [];
@@ -88,63 +89,11 @@ export default async function ProductoDetallePage({ params }: PageProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Galería de imágenes */}
-        <div className="space-y-4">
-          {/* Imagen principal */}
-          <div className="relative aspect-square bg-drblack rounded-lg border-2 border-drgold overflow-hidden">
-            {producto.imagenPrincipal ? (
-              <Image
-                src={producto.imagenPrincipal}
-                alt={producto.nombre}
-                fill
-                className="object-contain p-4"
-                priority
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-drgray">
-                Sin imagen
-              </div>
-            )}
-            {producto.destacado && (
-              <span className="absolute top-4 right-4 bg-drgold text-drblack px-3 py-1 text-sm font-bold rounded">
-                DESTACADO
-              </span>
-            )}
-            {producto.precioAnterior && (
-              <span className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 text-sm font-bold rounded">
-                OFERTA
-              </span>
-            )}
-          </div>
-
-          {/* Miniaturas */}
-          {producto.imagenes && producto.imagenes.length > 0 && (
-            <div className="flex gap-3 overflow-x-auto pb-2">
-              <div className="w-20 h-20 flex-shrink-0 rounded-lg border-2 border-drgold bg-drblack p-1 overflow-hidden">
-                <Image
-                  src={producto.imagenPrincipal}
-                  alt={producto.nombre}
-                  width={80}
-                  height={80}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              {producto.imagenes.map((img, index) => (
-                <div
-                  key={index}
-                  className="w-20 h-20 flex-shrink-0 rounded-lg border-2 border-drgold/50 bg-drblack p-1 overflow-hidden hover:border-drgold transition-colors"
-                >
-                  <Image
-                    src={img}
-                    alt={`${producto.nombre} - imagen ${index + 2}`}
-                    width={80}
-                    height={80}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <ProductGallery
+          imagenPrincipal={producto.imagenPrincipal}
+          imagenes={producto.imagenes}
+          nombre={producto.nombre}
+        />
 
         {/* Información del producto */}
         <div className="space-y-6">
@@ -288,13 +237,13 @@ export default async function ProductoDetallePage({ params }: PageProps) {
                 href={`/productos/${prod.slug}`}
                 className="card p-6 flex flex-col items-center transition-transform hover:scale-105 bg-drblack rounded shadow-dr border-2 border-drgold group"
               >
-                <div className="relative w-full aspect-square mb-4 rounded bg-drblack p-2 border-2 border-drgold overflow-hidden">
+                <div className="relative w-full aspect-square mb-4 rounded bg-drblack border-2 border-drgold overflow-hidden">
                   {prod.imagenPrincipal ? (
                     <Image
                       src={prod.imagenPrincipal}
                       alt={prod.nombre}
                       fill
-                      className="object-contain group-hover:scale-110 transition-transform"
+                      className="object-cover group-hover:scale-110 transition-transform"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-drgray">

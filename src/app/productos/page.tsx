@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getProducts } from '@/actions/products';
+import { getProductsStatic } from '@/actions/products-static';
 import { CATEGORIAS } from '@/types/product';
 
 interface PageProps {
@@ -21,7 +21,7 @@ export default async function ProductosPage({ searchParams }: PageProps) {
     filters.categoria = params.categoria;
   }
 
-  const result = await getProducts(filters, page, pageSize);
+  const result = await getProductsStatic(filters, page, pageSize);
 
   const productos = result.success ? result.data?.data || [] : [];
   const totalPages = result.success ? result.data?.totalPages || 1 : 1;
@@ -82,13 +82,13 @@ export default async function ProductosPage({ searchParams }: PageProps) {
               href={`/productos/${producto.slug}`}
               className="card p-6 sm:p-8 flex flex-col items-center transition-transform hover:scale-105 bg-drblack rounded shadow-dr border-2 border-drgold group"
             >
-              <div className="relative w-full aspect-square mb-6 rounded bg-drblack p-2 border-2 border-drgold overflow-hidden">
+              <div className="relative w-full aspect-square mb-6 rounded bg-drblack border-2 border-drgold overflow-hidden">
                 {producto.imagenPrincipal ? (
                   <Image
                     src={producto.imagenPrincipal}
                     alt={producto.nombre}
                     fill
-                    className="object-contain group-hover:scale-110 transition-transform"
+                    className="object-cover group-hover:scale-110 transition-transform"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-drgray">

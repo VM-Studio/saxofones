@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:producto": "node scripts/seed-producto-simple.js"
   },
   "dependencies": {
     "mongodb": "^7.0.0",

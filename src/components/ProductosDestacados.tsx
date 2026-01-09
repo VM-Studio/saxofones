@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getFeaturedProducts } from '@/actions/products';
+import { getFeaturedProductsStatic } from '@/actions/products-static';
 
 export async function ProductosDestacados() {
-  const result = await getFeaturedProducts(6);
+  const result = await getFeaturedProductsStatic(6);
   const productos = result.success ? result.data || [] : [];
 
   if (productos.length === 0) {
@@ -23,13 +23,13 @@ export async function ProductosDestacados() {
               href={`/productos/${producto.slug}`}
               className="card p-8 flex flex-col items-center transition-transform hover:scale-105 bg-drblack rounded shadow-dr border-2 border-drgold group"
             >
-              <div className="relative w-full aspect-square mb-6 rounded bg-drblack p-2 border-2 border-drgold overflow-hidden">
+              <div className="relative w-full aspect-square mb-6 rounded bg-drblack border-2 border-drgold overflow-hidden">
                 {producto.imagenPrincipal ? (
                   <Image
                     src={producto.imagenPrincipal}
                     alt={producto.nombre}
                     fill
-                    className="object-contain group-hover:scale-110 transition-transform"
+                    className="object-cover group-hover:scale-110 transition-transform"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-drgray">
