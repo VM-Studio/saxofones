@@ -28,105 +28,131 @@ export default async function ProductosPage({ searchParams }: PageProps) {
   const total = result.success ? result.data?.total || 0 : 0;
 
   return (
-    <main className="max-w-6xl mx-auto py-10 px-2 sm:px-6 bg-drmatte min-h-screen">
-      <h1 className="text-4xl md:text-5xl font-serif font-bold text-drgold text-center mb-4 tracking-wider uppercase">
+    <main className="max-w-6xl mx-auto py-10 px-2 sm:px-6 min-h-screen">
+      <h1 className="text-4xl md:text-5xl font-serif font-bold text-brown-dark text-center mb-4 tracking-wider">
         Catálogo de Instrumentos
       </h1>
-      <h2 className="text-xl md:text-2xl font-serif text-drgold text-center mb-10">
+      <h2 className="text-xl md:text-2xl font-serif text-brown text-center mb-10">
         Descubre nuestra selección premium de saxofones y vientos
       </h2>
 
-      {/* Filtros por categoría */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
-        <Link
-          href="/productos"
-          className={`px-4 py-2 rounded-lg border-2 transition-colors ${
-            !params.categoria
-              ? 'bg-drgold text-drblack border-drgold'
-              : 'border-drgold text-drgold hover:bg-drgold hover:text-drblack'
-          }`}
-        >
-          Todos
-        </Link>
-        {CATEGORIAS.map((cat) => (
+      {/* Filtros por categoría - Diseño moderno */}
+      <div className="mb-10">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <span className="text-brown text-sm font-medium uppercase tracking-wider">Filtrar por:</span>
+          <div className="h-px flex-1 max-w-25 bg-brown-light/30"></div>
+        </div>
+        
+        <div className="flex flex-wrap justify-center gap-2">
           <Link
-            key={cat.value}
-            href={`/productos?categoria=${cat.value}`}
-            className={`px-4 py-2 rounded-lg border-2 transition-colors ${
-              params.categoria === cat.value
-                ? 'bg-drgold text-drblack border-drgold'
-                : 'border-drgold text-drgold hover:bg-drgold hover:text-drblack'
+            href="/productos"
+            className={`group relative px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg ${
+              !params.categoria
+                ? 'text-white bg-gold shadow-md'
+                : 'text-brown hover:text-gold border border-brown-light/30 hover:border-gold/50 bg-white'
             }`}
           >
-            {cat.label}
+            <span className="relative z-10">Todos</span>
           </Link>
-        ))}
+          
+          {CATEGORIAS.map((cat) => (
+            <Link
+              key={cat.value}
+              href={`/productos?categoria=${cat.value}`}
+              className={`group relative px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg ${
+                params.categoria === cat.value
+                  ? 'text-white bg-gold shadow-md'
+                  : 'text-brown hover:text-gold border border-brown-light/30 hover:border-gold/50 bg-white'
+              }`}
+            >
+              <span className="relative z-10">{cat.label}</span>
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Contador */}
-      <p className="text-center text-drgray mb-6">{total} productos encontrados</p>
+      <div className="flex items-center justify-center gap-3 mb-8">
+        <div className="h-px w-12 bg-brown-light/30"></div>
+        <p className="text-charcoal-light text-sm font-medium">
+          {total} {total === 1 ? 'producto' : 'productos'}
+        </p>
+        <div className="h-px w-12 bg-brown-light/30"></div>
+      </div>
 
       {/* Grid de productos */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {productos.length === 0 ? (
           <div className="col-span-full text-center py-16">
-            <p className="text-drgray text-xl">No hay productos disponibles en esta categoría.</p>
-            <Link href="/productos" className="text-drgold hover:underline mt-4 inline-block">
+            <p className="text-charcoal-light text-xl">No hay productos disponibles en esta categoría.</p>
+            <Link href="/productos" className="text-gold hover:underline mt-4 inline-block">
               Ver todos los productos
             </Link>
           </div>
         ) : (
-          productos.map((producto) => (
-            <Link
-              key={producto._id}
-              href={`/productos/${producto.slug}`}
-              className="card p-6 sm:p-8 flex flex-col items-center transition-transform hover:scale-105 bg-drblack rounded shadow-dr border-2 border-drgold group"
-            >
-              <div className="relative w-full aspect-square mb-6 rounded bg-drblack border-2 border-drgold overflow-hidden">
-                {producto.imagenPrincipal ? (
+          productos.map((producto) => {
+            const categoriaLabel = CATEGORIAS.find(c => c.value === producto.categoria)?.label || producto.categoria || "Saxofón";
+            
+            return (
+              <Link
+                key={producto._id}
+                href={`/productos/${producto.slug}`}
+                className="group bg-white border border-brown-light/30 hover:border-gold/50 transition-all duration-300 rounded-xl overflow-hidden shadow-elegant hover:shadow-elegant-lg"
+              >
+                {/* Imagen */}
+                <div className="relative aspect-square bg-cream border-b border-brown-light/20 overflow-hidden">
                   <Image
                     src={producto.imagenPrincipal}
                     alt={producto.nombre}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform"
+                    className="object-contain p-8 group-hover:scale-105 transition-transform duration-500"
                   />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-drgray">
-                    Sin imagen
+
+                  {/* Badges */}
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    {producto.precioAnterior && (
+                      <span className="bg-gold text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded">
+                        Oferta
+                      </span>
+                    )}
                   </div>
-                )}
-                {producto.destacado && (
-                  <span className="absolute top-2 right-2 bg-drgold text-drblack px-2 py-1 text-xs font-bold rounded">
-                    DESTACADO
+                  <span className="absolute top-3 right-3 bg-white/90 text-brown text-[10px] font-medium px-2 py-1 uppercase tracking-wider rounded">
+                    {categoriaLabel}
                   </span>
-                )}
-                {producto.precioAnterior && (
-                  <span className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs font-bold rounded">
-                    OFERTA
+                </div>
+
+                {/* Info */}
+                <div className="p-5 bg-white">
+                  <span className="text-brown text-xs font-medium uppercase tracking-wider">
+                    {producto.marca}
                   </span>
-                )}
-              </div>
-              <h2 className="text-xl font-serif font-bold text-drgold mb-2 uppercase tracking-wide text-center">
-                {producto.nombre}
-              </h2>
-              <p className="text-base text-drgray mb-4 text-center line-clamp-2">
-                {producto.descripcionCorta}
-              </p>
-              <div className="flex items-center gap-2 mb-4">
-                {producto.precioAnterior && (
-                  <span className="text-drgray line-through text-sm">
-                    ${producto.precioAnterior.toLocaleString()} {producto.moneda}
-                  </span>
-                )}
-                <span className="text-lg font-bold text-drgold">
-                  ${producto.precio.toLocaleString()} {producto.moneda}
-                </span>
-              </div>
-              <span className="btn px-6 py-2 text-base font-bold border-drgold text-drgold group-hover:bg-drgold group-hover:text-drblack transition-colors w-full text-center">
-                Ver Detalles
-              </span>
-            </Link>
-          ))
+                  <h3 className="text-brown-dark font-semibold mt-1 mb-2 group-hover:text-gold transition-colors line-clamp-1">
+                    {producto.nombre}
+                  </h3>
+                  <p className="text-charcoal-light text-sm mb-4 line-clamp-2">
+                    {producto.descripcionCorta}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-baseline gap-2">
+                      {producto.precioAnterior && (
+                        <span className="text-charcoal-light line-through text-sm">
+                          {producto.moneda} {producto.precioAnterior.toLocaleString()}
+                        </span>
+                      )}
+                      <span className="text-gold font-bold text-xl">
+                        {producto.moneda} {producto.precio.toLocaleString()}
+                      </span>
+                    </div>
+                    <span className="text-brown group-hover:text-gold transition-colors">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })
         )}
       </div>
 
@@ -136,18 +162,18 @@ export default async function ProductosPage({ searchParams }: PageProps) {
           {page > 1 && (
             <Link
               href={`/productos?page=${page - 1}${params.categoria ? `&categoria=${params.categoria}` : ''}`}
-              className="btn px-4 py-2 text-base font-bold border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors"
+              className="px-6 py-2.5 text-base font-semibold border border-brown-light/30 text-brown hover:bg-gold hover:text-white hover:border-gold transition-all rounded-lg"
             >
               Anterior
             </Link>
           )}
-          <span className="text-drgold font-serif text-lg">
+          <span className="text-brown font-serif text-lg">
             Página {page} de {totalPages}
           </span>
           {page < totalPages && (
             <Link
               href={`/productos?page=${page + 1}${params.categoria ? `&categoria=${params.categoria}` : ''}`}
-              className="btn px-4 py-2 text-base font-bold border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors"
+              className="px-6 py-2.5 text-base font-semibold border border-brown-light/30 text-brown hover:bg-gold hover:text-white hover:border-gold transition-all rounded-lg"
             >
               Siguiente
             </Link>
@@ -157,11 +183,11 @@ export default async function ProductosPage({ searchParams }: PageProps) {
 
       {/* Newsletter al final */}
       <section className="py-10 flex justify-center items-center">
-        <div className="max-w-xl w-full mx-4 p-6 sm:p-10 bg-drblack rounded shadow-dr border-2 border-drgold flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-drgold text-center mb-4 tracking-wider uppercase">
+        <div className="max-w-xl w-full mx-4 p-6 sm:p-10 bg-white rounded-xl shadow-elegant border border-brown-light/30 flex flex-col items-center">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-brown-dark text-center mb-4 tracking-wide">
             Novedades y Ofertas
           </h2>
-          <p className="text-base text-drgray text-center mb-8">
+          <p className="text-base text-charcoal-light text-center mb-8">
             Suscríbete para enterarte de nuevos productos y ofertas exclusivas de saxos e instrumentos de viento.
           </p>
           <form className="w-full flex flex-col gap-4">
@@ -170,11 +196,11 @@ export default async function ProductosPage({ searchParams }: PageProps) {
               name="email"
               required
               placeholder="Tu email"
-              className="px-4 py-3 rounded border-2 border-drgold bg-drmatte text-drgray focus:outline-none focus:border-drgold2"
+              className="px-4 py-3 rounded-lg border-2 border-brown-light/30 bg-cream text-charcoal focus:outline-none focus:border-gold transition-colors"
             />
             <button
               type="submit"
-              className="btn px-8 py-3 text-lg font-bold border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors w-full"
+              className="px-8 py-3 text-lg font-bold bg-gold text-white hover:bg-gold-dark transition-colors w-full rounded-lg shadow-md hover:shadow-elegant"
             >
               Suscribirme
             </button>

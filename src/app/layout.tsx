@@ -47,13 +47,15 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-elegant`}
       >
         {/* Navbar global */}
-        <div className="sticky top-0 z-50">
+        <div className="sticky top-0 z-50 backdrop-blur-md bg-cream/90 shadow-elegant">
           <Navbar />
         </div>
-        {children}
+        <main className="min-h-screen">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
