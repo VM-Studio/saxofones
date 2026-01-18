@@ -35,7 +35,7 @@ export function HeroSection() {
     producto10
   ].filter((p): p is Product => p !== undefined);
 
-  // Auto-rotate cada 3 segundos
+  // Auto-rotate cada 6 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
@@ -43,7 +43,7 @@ export function HeroSection() {
         setCurrentIndex((prev) => (prev + 1) % productos.length);
         setIsTransitioning(false);
       }, 600);
-    }, 3000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [productos.length]);
@@ -79,20 +79,20 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Link
                 href="/contacto"
+                className="px-8 py-3 text-base font-semibold border-2 border-brown text-brown hover:bg-brown hover:text-white transition-all duration-300 text-center transform hover:-translate-y-0.5"
+              >
+                Contactar
+              </Link>
+              <Link
+                href="/productos"
                 className="group px-8 py-3 text-base font-semibold bg-gradient-to-r from-gold to-gold-dark text-brown-dark hover:shadow-elegant-lg transition-all duration-300 text-center transform hover:-translate-y-0.5"
               >
                 <span className="flex items-center justify-center gap-2">
-                  Contactar
+                  Ver Catálogo
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
-              </Link>
-              <Link
-                href="/productos"
-                className="px-8 py-3 text-base font-semibold border-2 border-brown text-brown hover:bg-brown hover:text-white transition-all duration-300 text-center transform hover:-translate-y-0.5"
-              >
-                Ver Catálogo
               </Link>
             </div>
           </div>

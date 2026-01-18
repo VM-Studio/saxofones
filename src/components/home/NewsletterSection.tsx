@@ -18,21 +18,18 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="py-24 pb-0 bg-gradient-to-br from-brown-dark via-brown to-brown-dark relative overflow-hidden">
-      {/* Decoradores de fondo */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,rgba(212,175,55,0.1),transparent_50%)]"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+    <section className="py-24 pb-0 bg-cream relative overflow-hidden">
       
       <div className="max-w-2xl mx-auto px-4 lg:px-8 relative z-10">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mt-2 mb-4 tracking-tight">
-            Novedades y Ofertas
+          <span className="inline-block text-brown text-xs sm:text-sm font-semibold tracking-wider uppercase mb-4">
+            NEWSLETTER
+          </span>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-brown-dark mt-2 mb-4 tracking-tight">
+            Mantente al día con Novedades y Ofertas
           </h2>
-          <p className="text-cream text-lg mb-10 leading-relaxed">
-            Suscríbete para enterarte de nuevos productos y ofertas exclusivas de saxos e instrumentos de viento.
-          </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 mt-10">
             <input
               type="email"
               value={email}
@@ -40,25 +37,25 @@ export function NewsletterSection() {
               required
               placeholder="tu@email.com"
               disabled={status === "loading" || status === "success"}
-              className="flex-1 px-6 py-4 bg-white/95 backdrop-blur-sm border-2 border-black text-brown-dark placeholder-brown-light focus:outline-none focus:border-black transition-all disabled:opacity-50 font-medium"
+              className="flex-1 px-6 py-4 bg-white border-2 border-brown text-brown-dark placeholder-brown-light focus:outline-none focus:border-gold transition-all disabled:opacity-50 font-medium"
             />
             <button
               type="submit"
               disabled={status === "loading" || status === "success"}
-              className="px-10 py-4 bg-gradient-to-r from-gold to-gold-dark text-black font-bold border-2 border-black hover:shadow-elegant-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transform hover:-translate-y-1"
+              className="px-10 py-4 bg-gradient-to-r from-gold to-gold-dark text-white font-bold border-2 border-gold hover:shadow-elegant-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transform hover:-translate-y-1"
             >
               {status === "loading" ? "Enviando..." : status === "success" ? "✓ ¡Suscrito!" : "Suscribirme"}
             </button>
           </form>
 
           {status === "success" && (
-            <p className="text-gold-light text-sm mt-6 bg-white/10 backdrop-blur-sm rounded-lg py-3 px-4 animate-fade-in">
+            <p className="text-gold text-sm mt-6 bg-white/90 backdrop-blur-sm rounded-lg py-3 px-4 animate-fade-in border border-gold/30">
               ✨ ¡Gracias por suscribirte! Recibirás nuestras novedades pronto.
             </p>
           )}
 
-          <p className="text-cream/70 text-xs mt-6">
-            Sin spam. Puedes darte de baja cuando quieras.
+          <p className="text-brown-light text-xs mt-6">
+            Sin spam. Solo contenido de valor. Puedes darte de baja cuando quieras.
           </p>
         </div>
       </div>
