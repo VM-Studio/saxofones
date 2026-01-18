@@ -53,28 +53,30 @@ export function ServiciosSection() {
           <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
         </div>
 
-        {/* Grid de servicios - MEJORADO */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Grid de servicios - Horizontal en móvil, Grid en desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {servicios.map((servicio, index) => (
             <div
               key={index}
-              className="group relative bg-white border border-brown-light/20 p-8 hover:shadow-elegant-lg transition-all duration-500 transform hover:-translate-y-2"
+              className="group relative bg-white border border-brown-light/20 p-6 hover:shadow-elegant-lg transition-all duration-500 transform hover:-translate-y-2 flex lg:flex-col items-center lg:items-start gap-4 lg:gap-0"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Icono con fondo */}
-              <div className="relative inline-block mb-5">
+              <div className="relative inline-block flex-shrink-0 lg:mb-5">
                 <div className="absolute inset-0 bg-gold/10 transform rotate-6 group-hover:rotate-12 transition-transform"></div>
                 <div className="relative text-gold p-4 bg-gradient-to-br from-gold/10 to-brown/10">
                   {servicio.icon}
                 </div>
               </div>
               
-              <h3 className="text-brown-dark font-bold text-lg mb-3 group-hover:text-gold transition-colors">
-                {servicio.titulo}
-              </h3>
-              <p className="text-charcoal-light text-sm leading-relaxed">
-                {servicio.descripcion}
-              </p>
+              <div className="flex-1 lg:flex-initial">
+                <h3 className="text-brown-dark font-bold text-lg mb-2 lg:mb-3 group-hover:text-gold transition-colors">
+                  {servicio.titulo}
+                </h3>
+                <p className="text-charcoal-light text-sm leading-relaxed">
+                  {servicio.descripcion}
+                </p>
+              </div>
 
               {/* Línea decorativa */}
               <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-gold to-gold-dark group-hover:w-full transition-all duration-500"></div>

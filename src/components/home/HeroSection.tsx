@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getProductoByIdFromDB } from "@/data/productos-db";
 import { Product } from "@/types/product";
 
 export function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Obtener 10 productos para el loop
   const producto1 = getProductoByIdFromDB('producto-001');
@@ -35,18 +34,13 @@ export function HeroSection() {
     producto10
   ].filter((p): p is Product => p !== undefined);
 
-  // Auto-rotate cada 6 segundos
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % productos.length);
-        setIsTransitioning(false);
-      }, 600);
-    }, 6000);
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? productos.length - 1 : prev - 1));
+  };
 
-    return () => clearInterval(interval);
-  }, [productos.length]);
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % productos.length);
+  };
 
   const currentProduct = productos[currentIndex];
 
@@ -97,7 +91,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* CARRUSEL AUTOMÁTICO DE PRODUCTO - DISEÑO COMPACTO */}
+          {/* CARRUSEL MANUAL DE PRODUCTO - DISEÑO COMPACTO */}
           <div className="relative animate-fade-in-delayed max-w-lg mx-auto">
             <Link
               href={`/productos/${currentProduct.slug}`}
@@ -105,10 +99,8 @@ export function HeroSection() {
             >
               {/* Sección de Imagen - Altura fija */}
               <div className="relative h-[420px] bg-gradient-to-br from-cream via-ivory to-cream-dark overflow-hidden flex-shrink-0 transform hover:scale-105 transition-transform duration-700">
-                {/* Imagen del producto con transición suave */}
-                <div className={`absolute inset-0 p-8 flex items-center justify-center transition-all duration-600 ${
-                  isTransitioning ? 'opacity-0' : 'opacity-100'
-                }`}>
+                {/* Imagen del producto */}
+                <div className="absolute inset-0 p-8 flex items-center justify-center">
                   <Image
                     src={currentProduct.imagenPrincipal}
                     alt={currentProduct.nombre}
@@ -150,9 +142,7 @@ export function HeroSection() {
 
               {/* Sección de Información - Altura fija */}
               <div className="p-5 h-[180px] flex-shrink-0 flex flex-col">
-                <div className={`transition-all duration-600 flex-1 flex flex-col ${
-                  isTransitioning ? 'opacity-0' : 'opacity-100'
-                }`}>
+                <div className="flex-1 flex flex-col">
                   {/* Marca */}
                   <span className="text-brown-light text-[10px] font-bold uppercase tracking-widest mb-2 block flex-shrink-0">
                     {currentProduct.marca}
@@ -183,6 +173,28 @@ export function HeroSection() {
                 </div>
               </div>
             </Link>
+            
+            {/* Flechas de navegación */}
+            <button
+              onClick={handlePrevious}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 p-0 bg-transparent border-none shadow-none z-10"
+              aria-label="Producto anterior"
+              style={{ boxShadow: 'none', border: 'none', background: 'none' }}
+            >
+              <svg className="w-7 h-7 text-black" fill="none" stroke="black" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 p-0 bg-transparent border-none shadow-none z-10"
+              aria-label="Producto siguiente"
+              style={{ boxShadow: 'none', border: 'none', background: 'none' }}
+            >
+              <svg className="w-7 h-7 text-black" fill="none" stroke="black" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
