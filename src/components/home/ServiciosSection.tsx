@@ -39,34 +39,45 @@ export function ServiciosSection() {
   ];
 
   return (
-    <section className="py-20 bg-drblack border-b border-zinc-800">
-      <div className="max-w-6xl mx-auto px-4 lg:px-8">
+    <section className="py-24 bg-gradient-to-b from-white to-cream relative overflow-hidden">
+      {/* Decoradores de fondo */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -z-0"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brown/5 rounded-full blur-3xl -z-0"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-drgold/80 text-sm font-medium tracking-[0.2em] uppercase">
-            ¿Por qué elegirnos?
-          </span>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-drgold mt-2 uppercase tracking-wide">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-brown-dark tracking-tight">
             Nuestros Servicios
           </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
         </div>
 
-        {/* Grid de servicios */}
+        {/* Grid de servicios - MEJORADO */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicios.map((servicio, index) => (
             <div
               key={index}
-              className="group bg-zinc-900 border border-zinc-800 p-6 hover:border-zinc-700 transition-colors"
+              className="group relative bg-white border border-brown-light/20 p-8 hover:shadow-elegant-lg transition-all duration-500 transform hover:-translate-y-2"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="text-drgold mb-4">
-                {servicio.icon}
+              {/* Icono con fondo */}
+              <div className="relative inline-block mb-5">
+                <div className="absolute inset-0 bg-gold/10 transform rotate-6 group-hover:rotate-12 transition-transform"></div>
+                <div className="relative text-gold p-4 bg-gradient-to-br from-gold/10 to-brown/10">
+                  {servicio.icon}
+                </div>
               </div>
-              <h3 className="text-white font-medium mb-2">
+              
+              <h3 className="text-brown-dark font-bold text-lg mb-3 group-hover:text-gold transition-colors">
                 {servicio.titulo}
               </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">
+              <p className="text-charcoal-light text-sm leading-relaxed">
                 {servicio.descripcion}
               </p>
+
+              {/* Línea decorativa */}
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-gold to-gold-dark group-hover:w-full transition-all duration-500"></div>
             </div>
           ))}
         </div>

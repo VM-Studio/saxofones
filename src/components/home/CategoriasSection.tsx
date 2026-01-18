@@ -28,43 +28,55 @@ export async function CategoriasSection() {
   }
 
   return (
-    <section className="py-20 bg-zinc-900 border-y border-zinc-800">
+    <section className="py-24 bg-cream-dark relative">
       <div className="max-w-6xl mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-drgold/80 text-sm font-medium tracking-[0.2em] uppercase">
+        <div className="text-center mb-16">
+          <span className="inline-block text-brown text-sm font-semibold tracking-wider uppercase bg-white px-4 py-1.5 rounded-full mb-4">
             Explora nuestro catálogo
           </span>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-drgold mt-2 uppercase tracking-wide">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-brown-dark tracking-tight">
             Categorías
           </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
         </div>
 
-        {/* Grid de categorías */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {categoriasConProductos.map((cat) => {
+        {/* Grid de categorías - MEJORADO */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {categoriasConProductos.map((cat, idx) => {
             const count = counts.find(c => c.categoria === cat.value)?.count || 0;
             
             return (
               <Link
                 key={cat.value}
                 href={`/productos?categoria=${cat.value}`}
-                className="group relative bg-zinc-950 border border-zinc-800 hover:border-drgold/50 p-6 transition-all duration-300"
+                className="group relative bg-white rounded-2xl border-2 border-brown-light/20 hover:border-gold/60 p-8 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-elegant-lg overflow-hidden"
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
-                <div className="flex flex-col items-center text-center">
-                  <span className="text-3xl mb-3">
+                {/* Fondo decorativo */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/0 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative flex flex-col items-center text-center">
+                  {/* Emoji con animación */}
+                  <div className="text-5xl mb-4 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                     {CATEGORY_ICONS[cat.value] || "🎵"}
-                  </span>
-                  <h3 className="text-white font-medium group-hover:text-drgold transition-colors">
+                  </div>
+                  
+                  <h3 className="text-brown-dark font-bold text-base mb-2 group-hover:text-gold transition-colors">
                     {cat.label}
                   </h3>
-                  <span className="text-zinc-600 text-sm mt-1">
+                  
+                  <span className="text-charcoal-light text-sm font-medium bg-cream px-3 py-1 rounded-full">
                     {count} {count === 1 ? "producto" : "productos"}
                   </span>
                 </div>
-                {/* Corner accent */}
-                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-drgold/0 group-hover:border-drgold/50 transition-colors" />
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-drgold/0 group-hover:border-drgold/50 transition-colors" />
+
+                {/* Arrow indicator */}
+                <div className="absolute top-4 right-4 text-brown-light group-hover:text-gold transition-colors">
+                  <svg className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </Link>
             );
           })}

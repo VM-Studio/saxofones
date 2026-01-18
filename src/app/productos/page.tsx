@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getProductsStatic } from '@/actions/products-static';
 import { CATEGORIAS } from '@/types/product';
+import { CategoriaFilter } from './CategoriaFilter';
 
 interface PageProps {
   searchParams: Promise<{
@@ -36,40 +37,8 @@ export default async function ProductosPage({ searchParams }: PageProps) {
         Descubre nuestra selección premium de saxofones y vientos
       </h2>
 
-      {/* Filtros por categoría - Diseño moderno */}
-      <div className="mb-10">
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <span className="text-brown text-sm font-medium uppercase tracking-wider">Filtrar por:</span>
-          <div className="h-px flex-1 max-w-25 bg-brown-light/30"></div>
-        </div>
-        
-        <div className="flex flex-wrap justify-center gap-2">
-          <Link
-            href="/productos"
-            className={`group relative px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg ${
-              !params.categoria
-                ? 'text-white bg-gold shadow-md'
-                : 'text-brown hover:text-gold border border-brown-light/30 hover:border-gold/50 bg-white'
-            }`}
-          >
-            <span className="relative z-10">Todos</span>
-          </Link>
-          
-          {CATEGORIAS.map((cat) => (
-            <Link
-              key={cat.value}
-              href={`/productos?categoria=${cat.value}`}
-              className={`group relative px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-lg ${
-                params.categoria === cat.value
-                  ? 'text-white bg-gold shadow-md'
-                  : 'text-brown hover:text-gold border border-brown-light/30 hover:border-gold/50 bg-white'
-              }`}
-            >
-              <span className="relative z-10">{cat.label}</span>
-            </Link>
-          ))}
-        </div>
-      </div>
+      {/* Filtros por categoría - Diseño minimalista */}
+      <CategoriaFilter />
 
       {/* Contador */}
       <div className="flex items-center justify-center gap-3 mb-8">
@@ -97,7 +66,7 @@ export default async function ProductosPage({ searchParams }: PageProps) {
               <Link
                 key={producto._id}
                 href={`/productos/${producto.slug}`}
-                className="group bg-white border border-brown-light/30 hover:border-gold/50 transition-all duration-300 rounded-xl overflow-hidden shadow-elegant hover:shadow-elegant-lg"
+                className="group bg-white border border-brown-light/30 hover:border-gold/50 transition-all duration-300 overflow-hidden shadow-elegant hover:shadow-elegant-lg"
               >
                 {/* Imagen */}
                 <div className="relative aspect-square bg-cream border-b border-brown-light/20 overflow-hidden">
@@ -111,12 +80,12 @@ export default async function ProductosPage({ searchParams }: PageProps) {
                   {/* Badges */}
                   <div className="absolute top-3 left-3 flex flex-col gap-2">
                     {producto.precioAnterior && (
-                      <span className="bg-gold text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded">
+                      <span className="bg-gold text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
                         Oferta
                       </span>
                     )}
                   </div>
-                  <span className="absolute top-3 right-3 bg-white/90 text-brown text-[10px] font-medium px-2 py-1 uppercase tracking-wider rounded">
+                  <span className="absolute top-3 right-3 bg-white/90 text-brown text-[10px] font-medium px-2 py-1 uppercase tracking-wider">
                     {categoriaLabel}
                   </span>
                 </div>
@@ -162,7 +131,7 @@ export default async function ProductosPage({ searchParams }: PageProps) {
           {page > 1 && (
             <Link
               href={`/productos?page=${page - 1}${params.categoria ? `&categoria=${params.categoria}` : ''}`}
-              className="px-6 py-2.5 text-base font-semibold border border-brown-light/30 text-brown hover:bg-gold hover:text-white hover:border-gold transition-all rounded-lg"
+              className="px-6 py-2.5 text-base font-semibold border border-brown-light/30 text-brown hover:bg-gold hover:text-white hover:border-gold transition-all"
             >
               Anterior
             </Link>
@@ -173,7 +142,7 @@ export default async function ProductosPage({ searchParams }: PageProps) {
           {page < totalPages && (
             <Link
               href={`/productos?page=${page + 1}${params.categoria ? `&categoria=${params.categoria}` : ''}`}
-              className="px-6 py-2.5 text-base font-semibold border border-brown-light/30 text-brown hover:bg-gold hover:text-white hover:border-gold transition-all rounded-lg"
+              className="px-6 py-2.5 text-base font-semibold border border-brown-light/30 text-brown hover:bg-gold hover:text-white hover:border-gold transition-all"
             >
               Siguiente
             </Link>
@@ -182,8 +151,8 @@ export default async function ProductosPage({ searchParams }: PageProps) {
       )}
 
       {/* Newsletter al final */}
-      <section className="py-10 flex justify-center items-center">
-        <div className="max-w-xl w-full mx-4 p-6 sm:p-10 bg-white rounded-xl shadow-elegant border border-brown-light/30 flex flex-col items-center">
+      <section className="py-20 mt-16 flex justify-center items-center">
+        <div className="max-w-xl w-full mx-4 flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-brown-dark text-center mb-4 tracking-wide">
             Novedades y Ofertas
           </h2>
@@ -196,11 +165,11 @@ export default async function ProductosPage({ searchParams }: PageProps) {
               name="email"
               required
               placeholder="Tu email"
-              className="px-4 py-3 rounded-lg border-2 border-brown-light/30 bg-cream text-charcoal focus:outline-none focus:border-gold transition-colors"
+              className="px-4 py-3 border-2 border-brown-light/30 bg-cream text-charcoal focus:outline-none focus:border-gold transition-colors"
             />
             <button
               type="submit"
-              className="px-8 py-3 text-lg font-bold bg-gold text-white hover:bg-gold-dark transition-colors w-full rounded-lg shadow-md hover:shadow-elegant"
+              className="px-8 py-3 text-lg font-bold bg-gold text-white hover:bg-gold-dark transition-colors w-full shadow-md hover:shadow-elegant"
             >
               Suscribirme
             </button>
