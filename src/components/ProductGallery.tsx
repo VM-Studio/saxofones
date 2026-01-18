@@ -42,7 +42,7 @@ export function ProductGallery({
   return (
     <div className="space-y-4">
       {/* Imagen/Video principal */}
-      <div className="relative aspect-square bg-drblack rounded-lg border-2 border-drgold overflow-hidden group">
+      <div className="relative aspect-square bg-drblack rounded-lg overflow-hidden group">
         {imagenActual ? (
           isVideo(imagenActual) ? (
             <video
@@ -98,16 +98,12 @@ export function ProductGallery({
 
       {/* Miniaturas */}
       {imagenesGaleria.length > 0 && (
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
           {imagenesGaleria.map((img, index) => (
             <button
               key={index}
               onClick={() => setImagenActual(img)}
-              className={`relative w-20 h-20 shrink-0 rounded-lg border-2 bg-drblack overflow-hidden transition-all ${
-                imagenActual === img
-                  ? 'border-drgold ring-2 ring-drgold/50'
-                  : 'border-drgold/50'
-              }`}
+              className="relative w-20 h-20 shrink-0 bg-drblack overflow-hidden transition-all"
             >
               {isVideo(img) ? (
                 <>

@@ -28,6 +28,16 @@ html::-webkit-scrollbar {
   display: none; /* Chrome, Safari y Opera */
 }
 
+/* Ocultar scrollbar en contenedores específicos */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari y Opera */
+}
+
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #FAF7F2 0%, #F5F1E8 100%);
@@ -52,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 button, .btn {
-  border-radius: 8px;
+  border-radius: 0;
   border: 2px solid #D4AF37;
   background: transparent;
   color: #D4AF37;

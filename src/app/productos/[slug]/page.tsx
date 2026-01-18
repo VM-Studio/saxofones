@@ -5,6 +5,7 @@ import { getProductBySlugStatic, getFeaturedProductsStatic } from '@/actions/pro
 import { CATEGORIAS, CONDICIONES } from '@/types/product';
 import type { Metadata } from 'next';
 import { ProductGallery } from '@/components/ProductGallery';
+import { ProductCard } from '@/app/productos/ProductCard';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -135,20 +136,6 @@ export default async function ProductoDetallePage({ params }: PageProps) {
             <span className="bg-drgold/20 text-drgold px-3 py-1 rounded-full text-sm">
               {condicionLabel}
             </span>
-            {producto.año && (
-              <span className="bg-drgold/20 text-drgold px-3 py-1 rounded-full text-sm">
-                Año: {producto.año}
-              </span>
-            )}
-            {producto.stock > 0 ? (
-              <span className="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">
-                En stock
-              </span>
-            ) : (
-              <span className="bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm">
-                Sin stock
-              </span>
-            )}
           </div>
 
           {/* Descripción corta */}
@@ -161,31 +148,27 @@ export default async function ProductoDetallePage({ params }: PageProps) {
                 href={producto.mercadoLibreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn px-8 py-4 text-lg font-bold bg-drgold text-drblack hover:bg-drgold2 transition-colors w-full sm:w-auto text-center"
+                className="btn px-6 py-3 text-base font-bold transition-colors w-full sm:w-auto text-center"
+                style={{ backgroundColor: '#8a6f48', color: '#FAF7F2', border: 'none' }}
               >
                 Comprar en Mercado Libre
               </a>
             ) : (
               <Link
                 href="/contacto"
-                className="btn px-8 py-4 text-lg font-bold bg-drgold text-drblack hover:bg-drgold2 transition-colors w-full sm:w-auto text-center"
+                className="btn px-6 py-3 text-base font-bold transition-colors w-full sm:w-auto text-center"
+                style={{ backgroundColor: '#8a6f48', color: '#FAF7F2', border: 'none' }}
               >
                 Consultar Disponibilidad
               </Link>
             )}
-            <Link
-              href="/contacto"
-              className="btn px-8 py-4 text-lg font-bold border-2 border-drgold text-drgold hover:bg-drgold hover:text-drblack transition-colors w-full sm:w-auto text-center"
-            >
-              Consultar
-            </Link>
           </div>
 
           {/* Descripción completa */}
           <div className="border-t border-drgold/30 pt-6">
             <h2 className="text-xl font-serif font-bold text-drgold mb-4">Descripción</h2>
             <div className="text-drgray leading-relaxed whitespace-pre-line">
-              {producto.descripcion}
+              {producto.descripcion.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '')}
             </div>
           </div>
 
@@ -232,32 +215,7 @@ export default async function ProductoDetallePage({ params }: PageProps) {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {relacionados.map((prod) => (
-              <Link
-                key={prod._id}
-                href={`/productos/${prod.slug}`}
-                className="card p-6 flex flex-col items-center transition-transform hover:scale-105 bg-drblack rounded shadow-dr border-2 border-drgold group"
-              >
-                <div className="relative w-full aspect-square mb-4 rounded bg-drblack border-2 border-drgold overflow-hidden">
-                  {prod.imagenPrincipal ? (
-                    <Image
-                      src={prod.imagenPrincipal}
-                      alt={prod.nombre}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-drgray">
-                      Sin imagen
-                    </div>
-                  )}
-                </div>
-                <h3 className="text-lg font-serif font-bold text-drgold mb-2 uppercase tracking-wide text-center">
-                  {prod.nombre}
-                </h3>
-                <span className="text-lg font-bold text-drgold">
-                  ${prod.precio.toLocaleString()} {prod.moneda}
-                </span>
-              </Link>
+              <ProductCard key={prod._id} producto={prod} />
             ))}
           </div>
         </section>

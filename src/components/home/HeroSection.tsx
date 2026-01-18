@@ -10,12 +10,30 @@ export function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Obtener los 3 productos específicos
+  // Obtener 10 productos para el loop
   const producto1 = getProductoByIdFromDB('producto-001');
   const producto2 = getProductoByIdFromDB('producto-002');
-  const producto3 = getProductoByIdFromDB('producto-019');
+  const producto3 = getProductoByIdFromDB('producto-003');
+  const producto4 = getProductoByIdFromDB('producto-004');
+  const producto5 = getProductoByIdFromDB('producto-005');
+  const producto6 = getProductoByIdFromDB('producto-006');
+  const producto7 = getProductoByIdFromDB('producto-007');
+  const producto8 = getProductoByIdFromDB('producto-008');
+  const producto9 = getProductoByIdFromDB('producto-009');
+  const producto10 = getProductoByIdFromDB('producto-010');
   
-  const productos = [producto1, producto2, producto3].filter((p): p is Product => p !== undefined);
+  const productos = [
+    producto1, 
+    producto2, 
+    producto3, 
+    producto4, 
+    producto5, 
+    producto6, 
+    producto7, 
+    producto8, 
+    producto9, 
+    producto10
+  ].filter((p): p is Product => p !== undefined);
 
   // Auto-rotate cada 3 segundos
   useEffect(() => {
@@ -24,7 +42,7 @@ export function HeroSection() {
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % productos.length);
         setIsTransitioning(false);
-      }, 300);
+      }, 600);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -83,13 +101,13 @@ export function HeroSection() {
           <div className="relative animate-fade-in-delayed max-w-lg mx-auto">
             <Link
               href={`/productos/${currentProduct.slug}`}
-              className="group relative bg-white shadow-elegant hover:shadow-elegant-lg transition-all duration-700 overflow-hidden transform hover:-translate-y-2 flex flex-col h-[600px]"
+              className="group relative transition-all duration-700 flex flex-col"
             >
               {/* Sección de Imagen - Altura fija */}
-              <div className="relative h-[420px] bg-gradient-to-br from-cream via-ivory to-cream-dark overflow-hidden flex-shrink-0">
+              <div className="relative h-[420px] bg-gradient-to-br from-cream via-ivory to-cream-dark overflow-hidden flex-shrink-0 transform hover:scale-105 transition-transform duration-700">
                 {/* Imagen del producto con transición suave */}
-                <div className={`absolute inset-0 p-8 flex items-center justify-center transition-all duration-500 ${
-                  isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                <div className={`absolute inset-0 p-8 flex items-center justify-center transition-all duration-600 ${
+                  isTransitioning ? 'opacity-0' : 'opacity-100'
                 }`}>
                   <Image
                     src={currentProduct.imagenPrincipal}
@@ -131,9 +149,9 @@ export function HeroSection() {
               </div>
 
               {/* Sección de Información - Altura fija */}
-              <div className="bg-white p-5 h-[180px] flex-shrink-0 flex flex-col">
-                <div className={`transition-all duration-500 flex-1 flex flex-col ${
-                  isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+              <div className="p-5 h-[180px] flex-shrink-0 flex flex-col">
+                <div className={`transition-all duration-600 flex-1 flex flex-col ${
+                  isTransitioning ? 'opacity-0' : 'opacity-100'
                 }`}>
                   {/* Marca */}
                   <span className="text-brown-light text-[10px] font-bold uppercase tracking-widest mb-2 block flex-shrink-0">
@@ -141,12 +159,12 @@ export function HeroSection() {
                   </span>
                   
                   {/* Nombre del producto - 2 líneas máximo, altura fija */}
-                  <h3 className="text-brown-dark text-lg font-bold mb-auto line-clamp-2 leading-tight flex-shrink-0 h-[3.5rem] overflow-hidden">
+                  <h3 className="text-brown-dark text-lg font-bold line-clamp-2 leading-none flex-shrink-0 overflow-hidden mb-1">
                     {currentProduct.nombre}
                   </h3>
 
-                  {/* Botón Ver más con flecha - pegado abajo */}
-                  <div className="flex items-center justify-between pt-3 border-t border-brown-light/10 flex-shrink-0 mt-auto">
+                  {/* Botón Ver más con flecha - pegado al título */}
+                  <div className="flex items-center justify-between flex-shrink-0">
                     <span className="text-gold text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
                       Ver más
                       <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -165,13 +183,6 @@ export function HeroSection() {
                 </div>
               </div>
             </Link>
-
-            {/* Decoradores elegantes con animación - más pequeños */}
-            <div className="absolute -bottom-6 -right-6 w-28 h-28 border-2 border-gold/20 -z-10 animate-pulse-slow" />
-            <div className="absolute -top-6 -left-6 w-20 h-20 border-2 border-brown/10 -z-10 animate-float" />
-            
-            {/* Línea decorativa animada */}
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/30 to-transparent animate-shimmer"></div>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import {
   HeroSection,
   ProductosDestacadosSection,
   ServiciosSection,
-  CategoriasSection,
   SobreNosotrosSection,
   NewsletterSection,
 } from "@/components/home";
@@ -197,9 +196,6 @@ export default function Home() {
 
         {/* Productos destacados */}
         <ProductosDestacadosSection />
-
-        {/* Categorías */}
-        <CategoriasSection />
 
         {/* Sobre nosotros */}
         <SobreNosotrosSection />
