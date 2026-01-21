@@ -64,7 +64,6 @@ export function HeroSection() {
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-brown-dark leading-[1.1] tracking-tight">
                 Saxofones y Vientos
-                <span className="block text-gold mt-2">Premium</span>
               </h1>
             </div>
             <p className="text-lg text-charcoal-light leading-relaxed max-w-xl">
