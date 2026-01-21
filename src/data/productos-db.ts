@@ -13,7 +13,7 @@ export const productosDB: Product[] = [
     _id: 'producto-001',
     
     // Información básica
-    nombre: 'Saxofón Alto Punk Jazz',
+    nombre: 'Saxofón Alto Punk Jazz CUSTOMSHOP',
     slug: 'saxofon-alto-punk-jazz',
     descripcion: `Este modelo es uno de los modelos semi profesionales a un precio de mercado imbatible.
 
@@ -101,7 +101,7 @@ Ideal para estudiantes avanzados y músicos semi-profesionales que buscan un ins
     _id: 'producto-002',
     
     // Información básica
-    nombre: 'Saxofón Alto Punk Jazz Dorado',
+    nombre: 'Saxofón Alto Punk Jazz Dorado CUSTOMSHOP',
     slug: 'saxofon-alto-punk-jazz-dorado',
     descripcion: `Este modelo es uno de los modelos semi profesionales laca dorada a un precio de mercado imbatible.
 

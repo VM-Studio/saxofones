@@ -22,15 +22,15 @@ export function SobreNosotrosSection() {
             
             {/* Stats mejorados */}
             <div className="grid grid-cols-3 gap-6 mt-10">
-              <div className="text-center transform hover:-translate-y-1 transition-all">
+              <div className="text-center transition-all">
                 <span className="text-brown text-2xl font-bold block mb-2">10+</span>
                 <p className="text-brown text-xs font-semibold">Años de experiencia</p>
               </div>
-              <div className="text-center transform hover:-translate-y-1 transition-all">
+              <div className="text-center transition-all">
                 <span className="text-brown text-2xl font-bold block mb-2">500+</span>
                 <p className="text-brown text-xs font-semibold">Clientes satisfechos</p>
               </div>
-              <div className="text-center transform hover:-translate-y-1 transition-all">
+              <div className="text-center transition-all">
                 <span className="text-brown text-2xl font-bold block mb-2">100%</span>
                 <p className="text-brown text-xs font-semibold">Garantía</p>
               </div>
@@ -40,7 +40,7 @@ export function SobreNosotrosSection() {
           {/* Mapa */}
           <div className="order-1 lg:order-2">
             {/* Mapa mejorado */}
-            <div className="relative aspect-video bg-white shadow-elegant-lg overflow-hidden border border-brown-light/[0.02] transform hover:-translate-y-2 transition-all duration-500">
+            <div className="relative aspect-video bg-white shadow-elegant-lg overflow-hidden border border-brown-light/[0.02] transition-all duration-500">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.858232993857!2d-60.66222268481344!3d-32.95072608092937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0!2sDR%20BRASS%20Rosario!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar"
                 width="100%"

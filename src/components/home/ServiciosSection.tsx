@@ -58,7 +58,7 @@ export function ServiciosSection() {
           {servicios.map((servicio, index) => (
             <div
               key={index}
-              className="group relative bg-white border border-brown-light/20 p-6 hover:shadow-elegant-lg transition-all duration-500 transform hover:-translate-y-2 flex lg:flex-col items-center lg:items-start gap-4 lg:gap-0"
+              className="group relative bg-white border border-brown-light/20 p-6 hover:shadow-elegant-lg transition-all duration-500 flex lg:flex-col items-center lg:items-start gap-4 lg:gap-0"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Icono con fondo */}

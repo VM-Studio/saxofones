@@ -47,42 +47,42 @@ export function HeroSection() {
   if (!currentProduct) return null;
 
   return (
-    <section className="relative min-h-[60vh] flex items-center overflow-hidden pt-4 pb-8">
+    <section className="relative min-h-[50vh] flex items-center overflow-hidden py-6">
       {/* Gradient Background con animación sutil */}
       <div className="absolute inset-0 bg-gradient-to-br from-cream via-ivory to-cream-dark">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.08),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,111,71,0.06),transparent_50%)]"></div>
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-4 lg:px-4 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6 items-center max-w-5xl mx-auto">
           {/* Texto principal */}
-          <div className="flex flex-col gap-6 py-8 lg:py-2 animate-fade-in">
-            <div className="space-y-3">
+          <div className="flex flex-col gap-4 py-4 lg:py-2 animate-fade-in">
+            <div className="space-y-2">
               <span className="inline-block text-brown text-sm font-semibold tracking-wider uppercase bg-gold/10 px-4 py-1.5">
                 Rosario, Argentina
               </span>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-brown-dark leading-[1.1] tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brown-dark leading-[1.1] tracking-tight">
                 Saxofones y Vientos
               </h1>
             </div>
-            <p className="text-lg text-charcoal-light leading-relaxed max-w-xl">
+            <p className="text-base text-charcoal-light leading-relaxed max-w-xl">
               Asesoramiento profesional para saxofonistas: compra, venta, canje y consignaciones de saxofones e instrumentos de viento.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <Link
                 href="/contacto"
-                className="px-8 py-3 text-base font-semibold border-2 border-brown text-brown hover:bg-brown hover:text-white transition-all duration-300 text-center transform hover:-translate-y-0.5"
+                className="px-6 py-2.5 text-base font-semibold border-2 border-brown text-brown hover:bg-brown hover:text-white transition-all duration-300 text-center"
               >
                 Contactar
               </Link>
               <Link
                 href="/productos"
-                className="group px-8 py-3 text-base font-semibold bg-gradient-to-r from-gold to-gold-dark text-brown-dark hover:shadow-elegant-lg transition-all duration-300 text-center transform hover:-translate-y-0.5"
+                className="group px-6 py-2.5 text-base font-semibold bg-gradient-to-r from-gold to-gold-dark text-brown-dark hover:shadow-elegant-lg transition-all duration-300 text-center"
               >
                 <span className="flex items-center justify-center gap-2">
                   Ver Catálogo
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
@@ -91,20 +91,20 @@ export function HeroSection() {
           </div>
 
           {/* CARRUSEL MANUAL DE PRODUCTO - DISEÑO COMPACTO */}
-          <div className="relative animate-fade-in-delayed max-w-lg mx-auto">
+          <div className="relative animate-fade-in-delayed max-w-md mx-auto lg:mx-0 lg:ml-4">
             <Link
               href={`/productos/${currentProduct.slug}`}
               className="group relative flex flex-col"
             >
               {/* Sección de Imagen - Altura fija */}
-              <div className="relative h-[420px] bg-gradient-to-br from-cream via-ivory to-cream-dark overflow-hidden flex-shrink-0 transform hover:scale-105 transition-transform duration-700">
+              <div className="relative h-[350px] bg-gradient-to-br from-cream via-ivory to-cream-dark overflow-hidden flex-shrink-0 transition-transform duration-700">
                 {/* Imagen del producto */}
-                <div className="absolute inset-0 p-8 flex items-center justify-center">
+                <div className="absolute inset-0 p-6 flex items-center justify-center">
                   <Image
                     src={currentProduct.imagenPrincipal}
                     alt={currentProduct.nombre}
                     fill
-                    className="object-contain p-6"
+                    className="object-contain p-4"
                   />
                 </div>
 
@@ -140,15 +140,15 @@ export function HeroSection() {
               </div>
 
               {/* Sección de Información - Altura fija */}
-              <div className="p-5 h-[180px] flex-shrink-0 flex flex-col">
+              <div className="p-4 h-[150px] flex-shrink-0 flex flex-col">
                 <div className="flex-1 flex flex-col">
                   {/* Marca */}
-                  <span className="text-brown-light text-[10px] font-bold uppercase tracking-widest mb-2 block flex-shrink-0">
+                  <span className="text-brown-light text-[10px] font-bold uppercase tracking-widest mb-1 block flex-shrink-0">
                     {currentProduct.marca}
                   </span>
                   
                   {/* Nombre del producto - 2 líneas máximo, altura fija */}
-                  <h3 className="text-brown-dark text-lg font-bold line-clamp-2 leading-none flex-shrink-0 overflow-hidden mb-1">
+                  <h3 className="text-brown-dark text-base font-bold line-clamp-2 leading-tight flex-shrink-0 overflow-hidden mb-1">
                     {currentProduct.nombre}
                   </h3>
 

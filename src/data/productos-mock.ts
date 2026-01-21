@@ -14,7 +14,7 @@ import type { CreateProductInput } from '@/types/product';
 export const productos: CreateProductInput[] = [
   {
     // Información básica
-    nombre: 'Saxofón Alto Punk Jazz',
+    nombre: 'Saxofón Alto Punk Jazz CUSTOMSHOP',
     slug: 'saxofon-alto-punk-jazz',
     descripcion: `Este modelo es uno de los modelos semi profesionales a un precio de mercado imbatible.
 

@@ -50,7 +50,7 @@ export async function CategoriasSection() {
               <Link
                 key={cat.value}
                 href={`/productos?categoria=${cat.value}`}
-                className="group relative bg-white rounded-2xl border-2 border-brown-light/20 hover:border-gold/60 p-8 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-elegant-lg overflow-hidden"
+                className="group relative bg-white rounded-2xl border-2 border-brown-light/20 hover:border-gold/60 p-8 transition-all duration-500 hover:shadow-elegant-lg overflow-hidden"
                 style={{ animationDelay: `${idx * 50}ms` }}
               >
                 {/* Fondo decorativo */}
@@ -58,7 +58,7 @@ export async function CategoriasSection() {
                 
                 <div className="relative flex flex-col items-center text-center">
                   {/* Emoji con animación */}
-                  <div className="text-5xl mb-4 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                  <div className="text-5xl mb-4 transition-transform duration-500">
                     {CATEGORY_ICONS[cat.value] || "🎵"}
                   </div>
                   
@@ -73,7 +73,7 @@ export async function CategoriasSection() {
 
                 {/* Arrow indicator */}
                 <div className="absolute top-4 right-4 text-brown-light group-hover:text-gold transition-colors">
-                  <svg className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>

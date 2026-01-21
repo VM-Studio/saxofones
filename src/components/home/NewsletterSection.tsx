@@ -42,7 +42,7 @@ export function NewsletterSection() {
             <button
               type="submit"
               disabled={status === "loading" || status === "success"}
-              className="px-10 py-4 bg-gradient-to-r from-gold to-gold-dark text-white font-bold border-2 border-gold hover:shadow-elegant-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transform hover:-translate-y-1"
+              className="px-10 py-4 bg-gradient-to-r from-gold to-gold-dark text-white font-bold border-2 border-gold hover:shadow-elegant-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
             >
               {status === "loading" ? "Enviando..." : status === "success" ? "✓ ¡Suscrito!" : "Suscribirme"}
             </button>

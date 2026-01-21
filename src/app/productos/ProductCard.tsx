@@ -19,7 +19,7 @@ export function ProductCard({ producto }: { producto: Product }) {
   return (
     <Link
       href={`/productos/${producto.slug}`}
-      className="group transition-all duration-500 overflow-hidden transform hover:-translate-y-3"
+      className="group transition-all duration-500 overflow-hidden"
     >
       {/* Imagen */}
       <div 
@@ -34,7 +34,7 @@ export function ProductCard({ producto }: { producto: Product }) {
           src={imagenAMostrar}
           alt={producto.nombre}
           fill
-          className="object-contain p-8 group-hover:scale-110 transition-transform duration-700"
+          className="object-contain p-8 transition-transform duration-700"
         />
 
         {/* Badges */}
