@@ -7,10 +7,10 @@ export default function Footer() {
         {/* Datos DR BRASS Google Maps */}
         <div className="flex flex-col gap-2 text-center sm:text-left">
           <h3 className="text-xl font-serif font-bold text-drgold mb-2 uppercase tracking-wide">DR BRASS Rosario</h3>
-          <span className="text-base">Dirección: Mendoza 1234, Rosario, Santa Fe</span>
-          <span className="text-base">Teléfono: +54 9 341 555-1234</span>
+          <span className="text-base">Dirección: Av. San Martín 1051 local 25, S2000 Rosario, Santa Fe</span>
+          <span className="text-base">Teléfono: +54 9 3413 81-4852</span>
           <span className="text-base">Email: info@drbrass.com.ar</span>
-          <span className="text-base">Horario: Lun-Vie 10:00-18:00, Sáb 10:00-13:00</span>
+          <span className="text-base">Horario: Lun-Vie 13:00-18:00</span>
         </div>
         {/* Redes y contacto */}
         <div className="flex flex-col gap-2 text-center sm:text-left">
