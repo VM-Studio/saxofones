@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Email de la empresa
-const OWNER_EMAIL = 'info@drbrassrosario.com';
+const OWNER_EMAIL = 'mchiuker@gmail.com';
 const FROM_EMAIL = 'DR BRASS <noreply@drbrassrosario.com>'; 
 interface ContactFormData {
   nombre: string;
