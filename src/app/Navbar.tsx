@@ -31,7 +31,7 @@ const socialLinks = [
     ),
   },
   {
-    href: "https://wa.me/5493415551234",
+    href: "https://wa.me/5493413814852",
     label: "WhatsApp",
     icon: (
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -115,7 +115,7 @@ export function Navbar() {
             {/* CTA Desktop */}
             <div className="hidden lg:flex items-center gap-4">
               <a
-                href="https://wa.me/5493415551234"
+                href="https://wa.me/5493413814852"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 bg-black text-white text-sm font-medium hover:bg-zinc-800 transition-colors"
@@ -167,7 +167,7 @@ export function Navbar() {
               {/* CTA Mobile */}
               <div className="mt-4 pt-4 border-t border-[#e5e2dc]">
                 <a
-                  href="https://wa.me/5493415551234"
+                  href="https://wa.me/5493413814852"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}

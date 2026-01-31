@@ -183,7 +183,7 @@ export default function Contacto() {
         <p className="mb-4 text-lg">¿Prefieres otros medios?</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
           <a 
-            href="https://wa.me/5493415551234" 
+            href="https://wa.me/5493413814852" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white rounded font-semibold hover:bg-green-700 transition"

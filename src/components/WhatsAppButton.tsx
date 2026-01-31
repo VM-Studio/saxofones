@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function WhatsAppButton() {
   // Número de WhatsApp - ajusta según tu número real
-  const phoneNumber = "5493415551234"; // Formato: código país + código área + número
+  const phoneNumber = "5493413814852"; // Formato: código país + código área + número
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
   return (

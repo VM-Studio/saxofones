@@ -5,8 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Email de la empresa
 const OWNER_EMAIL = 'info@drbrassrosario.com';
-const FROM_EMAIL = 'DR BRASS <noreply@drbrassrosario.com>'; // Cambiar por dominio verificado en Resend
-
+const FROM_EMAIL = 'DR BRASS <noreply@drbrassrosario.com>'; 
 interface ContactFormData {
   nombre: string;
   email: string;
@@ -174,7 +173,7 @@ export async function POST(request: NextRequest) {
                       <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                           <td align="center" style="padding: 20px 0;">
-                            <a href="https://wa.me/5493415551234" style="display: inline-block; background-color: #25D366; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                            <a href="https://wa.me/5493413814852" style="display: inline-block; background-color: #25D366; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
                               💬 Escribinos por WhatsApp
                             </a>
                           </td>
