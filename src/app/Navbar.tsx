@@ -8,7 +8,7 @@ const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/productos", label: "Productos" },
   { href: "/nosotros", label: "Nosotros" },
-  { href: "/novedades", label: "Novedades" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const socialLinks = [

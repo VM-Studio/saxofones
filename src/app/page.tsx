@@ -9,7 +9,7 @@ import {
 
 // SEO Metadata optimizado para Rosario + Buenos Aires
 export const metadata: Metadata = {
-  title: "DR BRASS Rosario | Saxofones y Vientos Premium | Compra, Venta y Canje",
+  title: "La MEJOR Tienda de Instrumentos Musicales en Rosario - si buscás Saxofones, Reparación de Instrumentos de Viento o Asesoramiento para Saxofonistas cerca tuyo - Dr.Brass McHiuker Luthier es el lugar",
   description:
     "Tienda de saxofones e instrumentos de viento en Rosario, Santa Fe. Compra, venta, canje y consignaciones. Asesoramiento profesional. Saxofones Yamaha, Selmer, Yanagisawa. Envíos a Buenos Aires y todo el país.",
   keywords: [
@@ -200,8 +200,6 @@ export default function Home() {
         {/* Sobre nosotros */}
         <SobreNosotrosSection />
 
-        {/* Newsletter */}
-        <NewsletterSection />
       </main>
     </>
   );

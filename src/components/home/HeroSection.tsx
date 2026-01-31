@@ -59,16 +59,16 @@ export function HeroSection() {
           {/* Texto principal */}
           <div className="flex flex-col gap-4 py-4 lg:py-2 animate-fade-in">
             <div className="space-y-2">
-              <span className="inline-block text-brown text-sm font-semibold tracking-wider uppercase bg-gold/10 px-4 py-1.5">
+              <span className="inline-block text-brown text-xs font-semibold tracking-wider uppercase bg-gold/10 px-4 py-1.5">
                 Rosario, Argentina
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brown-dark leading-[1.1] tracking-tight">
-                Saxofones y Vientos
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-black leading-[1.1] tracking-tight">
+                Tienda de Instrumentos Musicales en Rosario - Saxofones y Vientos
               </h1>
             </div>
-            <p className="text-base text-charcoal-light leading-relaxed max-w-xl">
-              Asesoramiento profesional para saxofonistas: compra, venta, canje y consignaciones de saxofones e instrumentos de viento.
-            </p>
+            <h2 className="text-base text-charcoal-light leading-relaxed max-w-xl">
+            Venta de Saxofones Nuevos y Usados con Garantía.
+            </h2>
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <Link
                 href="/contacto"

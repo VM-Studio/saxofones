@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SaxoShop | Tienda de Saxofones Profesionales",
+  title: "La MEJOR Tienda de Instrumentos Musicales en Rosario - si buscás Saxofones, Reparación de Instrumentos de Viento o Asesoramiento para Saxofonistas cerca tuyo - Dr.Brass McHiuker Luthier es el lugar",
   description: "Compra saxofones de alta calidad, asesoría personalizada y ofertas exclusivas. Tu tienda online de saxofones para músicos exigentes.",
   keywords: [
     "saxofones", "tienda de saxofones", "comprar saxofón", "saxofón profesional", "instrumentos musicales", "saxofón alto", "saxofón tenor", "saxofón soprano", "venta de saxofones"
