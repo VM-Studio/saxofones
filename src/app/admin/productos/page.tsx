@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProducts } from '@/actions/products';
-import { CATEGORIAS, CONDICIONES } from '@/types/product';
+import { CATEGORIAS } from '@/types/product';
+import type { ProductFilters } from '@/types/product';
 import { ProductActions } from './ProductActions';
 
 interface PageProps {
@@ -18,9 +19,14 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
   const params = await searchParams;
   
   const page = parseInt(params.page || '1');
-  const filters: any = {};
+  const filters: ProductFilters = {};
 
-  if (params.categoria) filters.categoria = params.categoria;
+  if (params.categoria) {
+    const categoriaValue = CATEGORIAS.find((cat) => cat.value === params.categoria)?.value;
+    if (categoriaValue) {
+      filters.categoria = categoriaValue;
+    }
+  }
   if (params.destacado) filters.destacado = params.destacado === 'true';
   if (params.activo) filters.activo = params.activo === 'true';
   if (params.search) filters.search = params.search;
@@ -92,7 +98,7 @@ export default async function AdminProductsPage({ searchParams }: PageProps) {
             name="search"
             placeholder="Buscar..."
             defaultValue={params.search || ''}
-            className="bg-zinc-700 text-white px-4 py-2 rounded-lg border border-zinc-600 focus:border-amber-500 focus:outline-none flex-1 min-w-[200px]"
+            className="bg-zinc-700 text-white px-4 py-2 rounded-lg border border-zinc-600 focus:border-amber-500 focus:outline-none flex-1 min-w-50"
           />
 
           <button

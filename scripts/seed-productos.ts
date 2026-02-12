@@ -15,6 +15,9 @@ import dbConnect from '../src/lib/mongodb';
 import ProductModel from '../src/models/Product';
 import { productos } from '../src/data/productos-mock';
 
+const getErrorMessage = (error: unknown, fallback: string) =>
+  error instanceof Error ? error.message : fallback;
+
 async function seedProductos() {
   try {
     console.log('🌱 Iniciando seed de productos...');
@@ -38,15 +41,18 @@ async function seedProductos() {
         // Crear el producto
         const producto = await ProductModel.create(productoData);
         console.log(`✅ Producto creado: "${producto.nombre}" (ID: ${producto._id})`);
-      } catch (error: any) {
-        console.error(`❌ Error creando producto "${productoData.nombre}":`, error.message);
+      } catch (error: unknown) {
+        console.error(
+          `❌ Error creando producto "${productoData.nombre}":`,
+          getErrorMessage(error, 'Error desconocido')
+        );
       }
     }
 
     console.log('\n🎉 Seed completado!');
     process.exit(0);
-  } catch (error) {
-    console.error('❌ Error en el seed:', error);
+  } catch (error: unknown) {
+    console.error('❌ Error en el seed:', getErrorMessage(error, 'Error desconocido'));
     process.exit(1);
   }
 }

@@ -43,7 +43,7 @@ export function DeleteProductButton({ productId, productName }: DeleteProductBut
         <div className="bg-zinc-800 rounded-xl p-6 max-w-md w-full mx-4 border border-zinc-700">
           <h3 className="text-xl font-bold text-white mb-4">¿Eliminar producto?</h3>
           <p className="text-zinc-300 mb-6">
-            ¿Estás seguro que deseas eliminar <strong>"{productName}"</strong>?
+            ¿Estás seguro que deseas eliminar <strong>&quot;{productName}&quot;</strong>?
           </p>
           <div className="flex flex-col gap-3">
             <button

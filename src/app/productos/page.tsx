@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { getProductsStatic } from '@/actions/products-static';
 import { CategoriaFilter } from './CategoriaFilter';
 import { ProductCard } from './ProductCard';
+import { CATEGORIAS } from '@/types/product';
+import type { ProductFilters } from '@/types/product';
 
 interface PageProps {
   searchParams: Promise<{
@@ -16,9 +18,12 @@ export default async function ProductosPage({ searchParams }: PageProps) {
   const page = parseInt(params.page || '1');
   const pageSize = 9;
 
-  const filters: any = { activo: true };
+  const filters: ProductFilters = { activo: true };
   if (params.categoria) {
-    filters.categoria = params.categoria;
+    const categoriaValue = CATEGORIAS.find((cat) => cat.value === params.categoria)?.value;
+    if (categoriaValue) {
+      filters.categoria = categoriaValue;
+    }
   }
 
   const result = await getProductsStatic(filters, page, pageSize);

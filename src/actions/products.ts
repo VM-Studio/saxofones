@@ -12,9 +12,12 @@ import type {
 } from '@/types/product';
 import { revalidatePath } from 'next/cache';
 
+const getErrorMessage = (error: unknown, fallback: string) =>
+  error instanceof Error ? error.message : fallback;
+
 // Función helper para convertir documento de Mongoose a objeto plano
-function toPlainObject<T>(doc: any): T {
-  return JSON.parse(JSON.stringify(doc));
+function toPlainObject<T>(doc: unknown): T {
+  return JSON.parse(JSON.stringify(doc)) as T;
 }
 
 // ============================================
@@ -55,11 +58,11 @@ export async function createProduct(
       data: toPlainObject<Product>(product),
       message: 'Producto creado exitosamente',
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creando producto:', error);
     return {
       success: false,
-      error: error.message || 'Error al crear el producto',
+      error: getErrorMessage(error, 'Error al crear el producto'),
     };
   }
 }
@@ -76,7 +79,7 @@ export async function getProducts(
     await dbConnect();
 
     // Construir query
-    const query: any = {};
+  const query: Record<string, unknown> = {};
 
     if (filters.categoria) {
       query.categoria = filters.categoria;
@@ -102,13 +105,14 @@ export async function getProducts(
     }
 
     if (filters.precioMin !== undefined || filters.precioMax !== undefined) {
-      query.precio = {};
+      const precioQuery: Record<string, number> = {};
       if (filters.precioMin !== undefined) {
-        query.precio.$gte = filters.precioMin;
+        precioQuery.$gte = filters.precioMin;
       }
       if (filters.precioMax !== undefined) {
-        query.precio.$lte = filters.precioMax;
+        precioQuery.$lte = filters.precioMax;
       }
+      query.precio = precioQuery;
     }
 
     if (filters.search) {
@@ -138,11 +142,11 @@ export async function getProducts(
         totalPages: Math.ceil(total / limit),
       },
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo productos:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener productos',
+      error: getErrorMessage(error, 'Error al obtener productos'),
     };
   }
 }
@@ -169,11 +173,11 @@ export async function getProductBySlug(
       success: true,
       data: toPlainObject<Product>(product),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo producto:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener el producto',
+      error: getErrorMessage(error, 'Error al obtener el producto'),
     };
   }
 }
@@ -200,11 +204,11 @@ export async function getProductById(
       success: true,
       data: toPlainObject<Product>(product),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo producto:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener el producto',
+      error: getErrorMessage(error, 'Error al obtener el producto'),
     };
   }
 }
@@ -244,11 +248,11 @@ export async function updateProduct(
       data: toPlainObject<Product>(product),
       message: 'Producto actualizado exitosamente',
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error actualizando producto:', error);
     return {
       success: false,
-      error: error.message || 'Error al actualizar el producto',
+      error: getErrorMessage(error, 'Error al actualizar el producto'),
     };
   }
 }
@@ -283,11 +287,11 @@ export async function deleteProduct(id: string): Promise<ApiResponse<null>> {
       success: true,
       message: 'Producto eliminado exitosamente',
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error eliminando producto:', error);
     return {
       success: false,
-      error: error.message || 'Error al eliminar el producto',
+      error: getErrorMessage(error, 'Error al eliminar el producto'),
     };
   }
 }
@@ -317,11 +321,11 @@ export async function hardDeleteProduct(id: string): Promise<ApiResponse<null>> 
       success: true,
       message: 'Producto eliminado permanentemente',
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error eliminando producto:', error);
     return {
       success: false,
-      error: error.message || 'Error al eliminar el producto',
+      error: getErrorMessage(error, 'Error al eliminar el producto'),
     };
   }
 }
@@ -344,11 +348,11 @@ export async function getFeaturedProducts(
       success: true,
       data: toPlainObject<Product[]>(products),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo productos destacados:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener productos destacados',
+      error: getErrorMessage(error, 'Error al obtener productos destacados'),
     };
   }
 }
@@ -361,7 +365,11 @@ export async function getProductsByCategory(
   page: number = 1,
   limit: number = 12
 ): Promise<ApiResponse<PaginatedResponse<Product>>> {
-  return getProducts({ categoria: categoria as any, activo: true }, page, limit);
+  return getProducts(
+    { categoria: categoria as ProductFilters['categoria'], activo: true },
+    page,
+    limit
+  );
 }
 
 // ============================================
@@ -397,11 +405,11 @@ export async function toggleFeatured(
         ? 'Producto marcado como destacado'
         : 'Producto desmarcado como destacado',
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error toggling destacado:', error);
     return {
       success: false,
-      error: error.message || 'Error al cambiar estado destacado',
+      error: getErrorMessage(error, 'Error al cambiar estado destacado'),
     };
   }
 }
@@ -435,11 +443,11 @@ export async function toggleActive(id: string): Promise<ApiResponse<Product>> {
       data: toPlainObject<Product>(product),
       message: product.activo ? 'Producto activado' : 'Producto desactivado',
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error toggling activo:', error);
     return {
       success: false,
-      error: error.message || 'Error al cambiar estado activo',
+      error: getErrorMessage(error, 'Error al cambiar estado activo'),
     };
   }
 }
@@ -457,11 +465,11 @@ export async function getUniqueBrands(): Promise<ApiResponse<string[]>> {
       success: true,
       data: brands.sort(),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo marcas:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener marcas',
+      error: getErrorMessage(error, 'Error al obtener marcas'),
     };
   }
 }
@@ -485,11 +493,11 @@ export async function getProductCountByCategory(): Promise<
       success: true,
       data: counts,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error contando productos:', error);
     return {
       success: false,
-      error: error.message || 'Error al contar productos',
+      error: getErrorMessage(error, 'Error al contar productos'),
     };
   }
 }

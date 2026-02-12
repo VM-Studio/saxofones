@@ -3,7 +3,11 @@ import {
   getProducts,
   createProduct,
 } from '@/actions/products';
+import { CATEGORIAS, CONDICIONES } from '@/types/product';
 import type { ProductFilters, CreateProductInput } from '@/types/product';
+
+const getErrorMessage = (error: unknown, fallback: string) =>
+  error instanceof Error ? error.message : fallback;
 
 // GET /api/products - Obtener productos con filtros
 export async function GET(request: NextRequest) {
@@ -14,13 +18,17 @@ export async function GET(request: NextRequest) {
     const filters: ProductFilters = {};
 
     const categoria = searchParams.get('categoria');
-    if (categoria) filters.categoria = categoria as any;
+    if (categoria && CATEGORIAS.some((cat) => cat.value === categoria)) {
+      filters.categoria = categoria as ProductFilters['categoria'];
+    }
 
     const marca = searchParams.get('marca');
     if (marca) filters.marca = marca;
 
     const condicion = searchParams.get('condicion');
-    if (condicion) filters.condicion = condicion as any;
+    if (condicion && CONDICIONES.some((cond) => cond.value === condicion)) {
+      filters.condicion = condicion as ProductFilters['condicion'];
+    }
 
     const precioMin = searchParams.get('precioMin');
     if (precioMin) filters.precioMin = parseFloat(precioMin);
@@ -51,10 +59,10 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error en GET /api/products:', error);
     return NextResponse.json(
-      { success: false, error: error.message || 'Error interno del servidor' },
+      { success: false, error: getErrorMessage(error, 'Error interno del servidor') },
       { status: 500 }
     );
   }
@@ -86,10 +94,10 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(result, { status: 201 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error en POST /api/products:', error);
     return NextResponse.json(
-      { success: false, error: error.message || 'Error interno del servidor' },
+      { success: false, error: getErrorMessage(error, 'Error interno del servidor') },
       { status: 500 }
     );
   }

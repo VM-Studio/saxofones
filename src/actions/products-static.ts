@@ -10,8 +10,10 @@ import {
   getProductosFromDB, 
   getProductoBySlugFromDB, 
   getProductosDestacadosFromDB,
-  getTotalProductosDB 
 } from '@/data/productos-db';
+
+const getErrorMessage = (error: unknown, fallback: string) =>
+  error instanceof Error ? error.message : fallback;
 
 // ============================================
 // OBTENER TODOS LOS PRODUCTOS (con filtros y paginación)
@@ -63,11 +65,11 @@ export async function getProductsStatic(
         totalPages,
       },
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo productos:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener productos',
+      error: getErrorMessage(error, 'Error al obtener productos'),
     };
   }
 }
@@ -92,11 +94,11 @@ export async function getProductBySlugStatic(
       success: true,
       data: product,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo producto:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener el producto',
+      error: getErrorMessage(error, 'Error al obtener el producto'),
     };
   }
 }
@@ -114,11 +116,11 @@ export async function getFeaturedProductsStatic(
       success: true,
       data: productos,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo productos destacados:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener productos destacados',
+      error: getErrorMessage(error, 'Error al obtener productos destacados'),
     };
   }
 }
@@ -149,11 +151,11 @@ export async function getProductStatsStatic(): Promise<ApiResponse<{
         categorias,
       },
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error obteniendo estadísticas:', error);
     return {
       success: false,
-      error: error.message || 'Error al obtener estadísticas',
+      error: getErrorMessage(error, 'Error al obtener estadísticas'),
     };
   }
 }

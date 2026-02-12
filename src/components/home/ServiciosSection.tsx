@@ -36,41 +36,50 @@ export function ServiciosSection() {
       titulo: "Consignaciones",
       descripcion: "Vendemos tu instrumento por vos, sin complicaciones.",
     },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7l-1 3m0 0l-4 8-4-8m8 0H8m12 6v3a2 2 0 01-2 2H6a2 2 0 01-2-2v-3" />
+        </svg>
+      ),
+      titulo: "Luthería",
+      descripcion: "Reparación, calibración, restauraciones y personalizaciones en saxofones y bronces.",
+    },
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-cream relative overflow-hidden">
+    <section className="py-24 bg-linear-to-b from-white to-cream relative overflow-hidden">
       {/* Decoradores de fondo */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -z-0"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brown/5 rounded-full blur-3xl -z-0"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl z-0"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brown/5 rounded-full blur-3xl z-0"></div>
       
-      <div className="max-w-6xl mx-auto px-4 lg:px-8 relative z-10">
+  <div className="max-w-7xl mx-auto px-3 lg:px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-brown-dark tracking-tight">
             Nuestros Servicios
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
+          <div className="w-20 h-1 bg-linear-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
         </div>
 
         {/* Grid de servicios - Horizontal en móvil, Grid en desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
           {servicios.map((servicio, index) => (
             <div
               key={index}
-              className="group relative bg-white border border-brown-light/20 p-6 hover:shadow-elegant-lg transition-all duration-500 flex lg:flex-col items-center lg:items-start gap-4 lg:gap-0"
+              className="group relative bg-white border border-brown-light/20 p-5 hover:shadow-elegant-lg transition-all duration-500 flex lg:flex-col items-center lg:items-start gap-4 lg:gap-2 lg:min-h-72"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Icono con fondo */}
-              <div className="relative inline-block flex-shrink-0 lg:mb-5">
+              <div className="relative inline-block shrink-0 lg:mb-5">
                 <div className="absolute inset-0 bg-gold/10 transform rotate-6 group-hover:rotate-12 transition-transform"></div>
-                <div className="relative text-gold p-4 bg-gradient-to-br from-gold/10 to-brown/10">
+                <div className="relative text-gold p-4 bg-linear-to-br from-gold/10 to-brown/10">
                   {servicio.icon}
                 </div>
               </div>
               
               <div className="flex-1 lg:flex-initial">
-                <h3 className="text-brown-dark font-bold text-lg mb-2 lg:mb-3 group-hover:text-gold transition-colors">
+                <h3 className="text-brown-dark font-bold text-base mb-2 lg:mb-3 group-hover:text-gold transition-colors leading-snug">
                   {servicio.titulo}
                 </h3>
                 <p className="text-charcoal-light text-sm leading-relaxed">
@@ -79,7 +88,7 @@ export function ServiciosSection() {
               </div>
 
               {/* Línea decorativa */}
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-gold to-gold-dark group-hover:w-full transition-all duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-linear-to-r from-gold to-gold-dark group-hover:w-full transition-all duration-500"></div>
             </div>
           ))}
         </div>
