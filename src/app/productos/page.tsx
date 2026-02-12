@@ -94,32 +94,6 @@ export default async function ProductosPage({ searchParams }: PageProps) {
         </div>
       )}
 
-      {/* Newsletter al final */}
-      <section className="py-20 mt-16 flex justify-center items-center">
-        <div className="max-w-xl w-full mx-4 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-brown-dark text-center mb-4 tracking-wide">
-            Novedades y Ofertas
-          </h2>
-          <p className="text-base text-charcoal-light text-center mb-8">
-            Suscríbete para enterarte de nuevos productos y ofertas exclusivas de saxos e instrumentos de viento.
-          </p>
-          <form className="w-full flex flex-col gap-4">
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Tu email"
-              className="px-4 py-3 border-2 border-brown-light/30 bg-cream text-charcoal focus:outline-none focus:border-gold transition-colors"
-            />
-            <button
-              type="submit"
-              className="px-8 py-3 text-lg font-bold bg-gold text-white hover:bg-gold-dark transition-colors w-full shadow-md hover:shadow-elegant"
-            >
-              Suscribirme
-            </button>
-          </form>
-        </div>
-      </section>
     </main>
   );
 }

@@ -131,12 +131,6 @@ export function Footer() {
                 </a>
               </p>
               <p className="text-zinc-500">
-                <span className="text-zinc-400">Email:</span><br />
-                <a href="mailto:info@drbrass.com.ar" className="hover:text-white transition-colors">
-                  info@drbrass.com.ar
-                </a>
-              </p>
-              <p className="text-zinc-500">
                 <span className="text-zinc-400">Horario:</span><br />
                 Lun-Vie 10:00-18:00<br />
                 Sáb 10:00-13:00
