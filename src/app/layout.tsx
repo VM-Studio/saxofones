@@ -17,16 +17,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "La MEJOR Tienda de Instrumentos Musicales en Rosario - si buscás Saxofones, Reparación de Instrumentos de Viento o Asesoramiento para Saxofonistas cerca tuyo - Dr.Brass McHiuker Luthier es el lugar",
-  description: "Compra saxofones de alta calidad, asesoría personalizada y ofertas exclusivas. Tu tienda online de saxofones para músicos exigentes.",
+  // Simple, site-wide SEO focused on Rosario
+  title: "DRBRASS — Rosario — Tienda de instrumentos musicales",
+  description:
+    "La mejor tienda de instrumentos musicales de Rosario. Saxofones, luthería, reparación y asesoramiento profesional.",
   keywords: [
-    "saxofones", "tienda de saxofones", "comprar saxofón", "saxofón profesional", "instrumentos musicales", "saxofón alto", "saxofón tenor", "saxofón soprano", "venta de saxofones"
+    "DRBRASS",
+    "Rosario",
+    "instrumentos musicales",
+    "saxofones",
+    "luthería",
+    "reparación de instrumentos",
+    "accesorios musicales"
   ],
   openGraph: {
-    title: "SaxoShop | Tienda de Saxofones Profesionales",
-    description: "Compra saxofones de alta calidad, asesoría personalizada y ofertas exclusivas.",
-    url: "https://saxoshop.com",
-    siteName: "SaxoShop",
+    title: "DRBRASS — Rosario — Tienda de instrumentos musicales",
+    description:
+      "La mejor tienda de instrumentos musicales de Rosario. Saxofones, luthería, reparación y asesoramiento profesional.",
+    siteName: "DRBRASS",
     images: [
       {
         url: "/saxofon-hero.png",
@@ -35,7 +43,7 @@ export const metadata: Metadata = {
         alt: "Saxofón dorado tienda online"
       }
     ],
-    locale: "es_ES",
+    locale: "es_AR",
     type: "website"
   }
 };
