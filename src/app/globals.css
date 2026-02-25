@@ -214,6 +214,11 @@ input:focus, textarea:focus {
   animation: float 3s ease-in-out infinite;
 }
 
+.animate-float-delayed {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
 .animate-shimmer {
   animation: shimmer 3s linear infinite;
   background: linear-gradient(to right, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);

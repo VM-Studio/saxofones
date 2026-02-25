@@ -39,6 +39,8 @@ module.exports = {
         dr: '0 4px 24px 0 rgba(139, 111, 71, 0.15)',
         elegant: '0 8px 32px 0 rgba(139, 111, 71, 0.12)',
         'elegant-lg': '0 12px 48px 0 rgba(139, 111, 71, 0.18)',
+        gold: '0 8px 32px 0 rgba(212, 175, 55, 0.25)',
+        brown: '0 8px 32px 0 rgba(139, 111, 71, 0.25)',
       },
       letterSpacing: {
         wide: '0.1em',
