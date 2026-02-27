@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-drblack text-drgray border-t-2 border-drgold py-8 mt-10">
+    <footer className="bg-drblack text-drgray py-8 mt-10">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-start">
         {/* Datos DR BRASS Google Maps */}
         <div className="flex flex-col gap-2 text-center sm:text-left">
