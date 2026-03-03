@@ -11,6 +11,7 @@ module.exports = {
         // Nueva paleta elegante
         cream: '#FAF7F2',        // Fondo principal crema suave
         'cream-dark': '#F5F1E8',  // Crema más oscuro para contrastes
+        warm: '#faf5ed',          // Fondo cálido para secciones alternas
         gold: '#D4AF37',         // Dorado elegante (mantener)
         'gold-light': '#E8D4A0', // Dorado claro
         'gold-dark': '#B8941F',  // Dorado oscuro

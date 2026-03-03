@@ -1,4 +1,5 @@
 import { HeroCanjes } from "./components/HeroCanjes";
+import { VentajasCanjes } from "./components/VentajasCanjes";
 import { ProcesoCanjes } from "./components/ProcesoCanjes";
 import { CTACanjes } from "./components/CTACanjes";
 
@@ -14,13 +15,9 @@ export const metadata = {
 export default function CanjesesPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Section */}
       <HeroCanjes />
-
-      {/* Proceso */}
+      <VentajasCanjes />
       <ProcesoCanjes />
-
-      {/* CTA Final */}
       <CTACanjes />
     </main>
   );

@@ -1,5 +1,4 @@
 import { HeroAsesoramiento } from "./components/HeroAsesoramiento";
-import { EspecialstasAsesoramiento } from "./components/EspecialistasAsesoramiento";
 import { ServiciosAsesoramiento } from "./components/ServiciosAsesoramiento";
 import { CTAAsesoramiento } from "./components/CTAAsesoramiento";
 
@@ -17,9 +16,6 @@ export default function AsesoramientoPage() {
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
       <HeroAsesoramiento />
-
-      {/* Especialistas */}
-      <EspecialstasAsesoramiento />
 
       {/* Servicios */}
       <ServiciosAsesoramiento />

@@ -4,74 +4,58 @@ import Link from "next/link";
 
 export function HeroCanjes() {
   return (
-    <section className="relative min-h-[70vh] flex items-center bg-linear-to-br from-cream via-ivory to-cream-dark overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-brown/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+    <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-16 md:pt-20">
+      {/* Modern geometric decorations */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-gold/5 to-transparent"></div>
+      <div className="absolute top-20 right-10 md:right-20 w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 border border-gold/10 rounded-full"></div>
+      <div className="absolute top-32 right-20 md:right-32 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border border-gold/10 rounded-full"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-gold/30 to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 md:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+          {/* Left side */}
+          <div className="flex flex-col items-start space-y-6 md:space-y-8">
+            <div className="w-12 h-px bg-gold"></div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-brown-dark leading-tight">
-                Programa de
-                <span className="block text-gold">Canjes</span>
-              </h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-brown-dark leading-tight tracking-tight">
+              Programa de
+              <span className="block text-gold mt-1">Canjes</span>
+            </h1>
 
-              <p className="text-lg md:text-xl text-charcoal leading-relaxed max-w-2xl">
-                Intercambia tu saxofón actual por uno nuevo o usado en mejores condiciones.
-                En DR BRASS ofrecemos los mejores valores en canjes del mercado.
-              </p>
-            </div>
+            <p className="text-base sm:text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-xl">
+              Intercambia tu saxofón actual por uno nuevo o usado en mejores condiciones.
+              En DR BRASS ofrecemos los mejores valores en canjes del mercado.
+            </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/productos"
-                className="group inline-flex items-center justify-center gap-3 bg-brown-dark text-cream hover:bg-brown text-lg font-semibold transition-all px-8 py-4 shadow-elegant hover:shadow-elegant-lg transform hover:-translate-y-1 whitespace-nowrap"
-              >
-                Ver Nuestro Stock
-                <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
+            <Link
+              href="/productos"
+              className="group inline-flex items-center gap-3 bg-brown-dark text-cream hover:bg-brown text-sm sm:text-base font-medium tracking-wide uppercase transition-all duration-300 px-7 sm:px-8 py-3.5 sm:py-4 hover:shadow-elegant"
+            >
+              Ver Nuestro Stock
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
 
-          {/* Right side - Visual */}
+          {/* Right side - Process steps */}
           <div className="relative">
-            <div className="relative bg-linear-to-br from-gold/20 to-brown/20 rounded-3xl p-8 shadow-elegant-lg backdrop-blur-sm">
-              <div className="space-y-6">
-                {/* Swap Icon */}
-                <div className="flex justify-center">
-                  <div className="relative w-32 h-32">
-                    <div className="absolute inset-0 bg-gold/30 rounded-full blur-2xl animate-pulse-slow"></div>
-                    <div className="relative w-full h-full flex items-center justify-center bg-linear-to-br from-gold to-gold-dark rounded-3xl shadow-elegant-lg">
-                      <svg className="w-16 h-16 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" />
-                      </svg>
-                    </div>
-                  </div>
+            <div className="space-y-3">
+              {[
+                { num: "01", text: "Evalúa tu instrumento" },
+                { num: "02", text: "Recibe nuestra tasación" },
+                { num: "03", text: "Elige tu nuevo saxofón" },
+                { num: "04", text: "Tu nuevo instrumento" },
+              ].map((step, i) => (
+                <div
+                  key={i}
+                  className="group flex items-center gap-4 md:gap-6 bg-white border border-gold/10 hover:border-gold/30 p-4 md:p-5 transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  <span className="font-serif text-gold text-lg md:text-xl font-bold tracking-wider min-w-10">{step.num}</span>
+                  <div className="w-px h-6 bg-gold/20"></div>
+                  <span className="text-sm md:text-base font-medium text-brown-dark">{step.text}</span>
                 </div>
-
-                {/* Process steps */}
-                <div className="space-y-4">
-                  {[
-                    { num: "1", text: "Evalúa tu instrumento", icon: "🎷" },
-                    { num: "2", text: "Recibe nuestra tasación", icon: "💰" },
-                    { num: "3", text: "Elige tu nuevo saxofón", icon: "✨" },
-                    { num: "4", text: "¡Listo! Tu nuevo instrumento", icon: "🎉" }
-                  ].map((step) => (
-                    <div key={step.num} className="flex items-center gap-4 bg-white/70 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all">
-                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gold/20 text-brown-dark font-bold shrink-0 font-serif">
-                        {step.num}
-                      </div>
-                      <span className="text-sm font-semibold text-brown-dark font-serif">{step.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

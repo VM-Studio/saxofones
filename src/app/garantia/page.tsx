@@ -14,13 +14,8 @@ export const metadata = {
 export default function GarantiaPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Section */}
       <HeroGarantia />
-
-      {/* Testimonios */}
       <TestimoniosGarantia />
-
-      {/* CTA Final */}
       <CTAGarantia />
     </main>
   );
