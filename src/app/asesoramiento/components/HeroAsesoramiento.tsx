@@ -7,8 +7,6 @@ export function HeroAsesoramiento() {
     <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-16 md:pt-20">
       {/* Modern geometric decorations */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-gold/5 to-transparent"></div>
-      <div className="absolute top-20 right-10 md:right-20 w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 border border-gold/10 rounded-full"></div>
-      <div className="absolute top-32 right-20 md:right-32 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 border border-gold/10 rounded-full"></div>
       <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-gold/30 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 md:py-0">
