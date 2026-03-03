@@ -1,7 +1,5 @@
 import { HeroCanjes } from "./components/HeroCanjes";
-import { VentajasCanjes } from "./components/VentajasCanjes";
 import { ProcesoCanjes } from "./components/ProcesoCanjes";
-import { CTACanjes } from "./components/CTACanjes";
 
 export const metadata = {
   title: "Programa de Canjes | DR BRASS",
@@ -16,9 +14,7 @@ export default function CanjesesPage() {
   return (
     <main className="min-h-screen bg-white">
       <HeroCanjes />
-      <VentajasCanjes />
       <ProcesoCanjes />
-      <CTACanjes />
     </main>
   );
 }

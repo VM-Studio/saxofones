@@ -1,7 +1,5 @@
 import { HeroLutheria } from "./components/HeroLutheria";
-import { ServiciosLutheria } from "./components/ServiciosLutheria";
 import { ProcesoLutheria } from "./components/ProcesoLutheria";
-import { CTALutheria } from "./components/CTALutheria";
 
 export const metadata = {
   title: "Luthería Profesional | Reparación y Restauración de Saxofones | DR BRASS",
@@ -18,14 +16,8 @@ export default function LuthieriaPage() {
       {/* Hero Section */}
       <HeroLutheria />
 
-      {/* Servicios */}
-      <ServiciosLutheria />
-
       {/* Proceso */}
       <ProcesoLutheria />
-
-      {/* CTA Final */}
-      <CTALutheria />
     </main>
   );
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function HeroLutheria() {
   return (
-    <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-16 md:pt-20">
+    <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-8 md:pt-10">
       {/* Modern geometric decorations */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-gold/5 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-gold/30 to-transparent"></div>
@@ -15,12 +15,11 @@ export function HeroLutheria() {
           <div className="flex flex-col items-start space-y-6 md:space-y-8">
             <div className="w-12 h-px bg-gold"></div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-brown-dark leading-tight tracking-tight">
-              Luthería
-              <span className="block text-gold mt-1">Profesional</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-brown-dark leading-tight tracking-tight">
+              Luthería <span className="text-gold">Profesional</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-xl">
               Reparación, restauración y personalización de saxofones por maestros lutieres
               con décadas de experiencia en el arte de la luthería.
             </p>
@@ -47,7 +46,7 @@ export function HeroLutheria() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="group bg-white border border-gold/10 hover:border-gold/30 p-4 md:p-5 transition-all duration-300 hover:-translate-y-0.5 text-center"
+                  className="group bg-brown-dark/[0.03] shadow-[0_2px_12px_0_rgba(107,86,53,0.08)] hover:shadow-[0_4px_20px_0_rgba(107,86,53,0.14)] p-3 md:p-4 transition-all duration-300 hover:-translate-y-1 text-center"
                 >
                   <span className="text-sm md:text-base font-medium text-brown-dark">{item.text}</span>
                 </div>

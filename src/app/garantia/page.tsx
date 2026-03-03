@@ -1,6 +1,5 @@
 import { HeroGarantia } from "./components/HeroGarantia";
 import { TestimoniosGarantia } from "./components/TestimoniosGarantia";
-import { CTAGarantia } from "./components/CTAGarantia";
 
 export const metadata = {
   title: "Garantía Total en Saxofones | DR BRASS",
@@ -16,7 +15,6 @@ export default function GarantiaPage() {
     <main className="min-h-screen bg-white">
       <HeroGarantia />
       <TestimoniosGarantia />
-      <CTAGarantia />
     </main>
   );
 }

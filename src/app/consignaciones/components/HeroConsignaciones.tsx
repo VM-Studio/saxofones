@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function HeroConsignaciones() {
   return (
-    <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-16 md:pt-20">
+    <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-8 md:pt-10">
       {/* Modern geometric decorations */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-gold/5 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-gold/30 to-transparent"></div>
@@ -15,12 +15,11 @@ export function HeroConsignaciones() {
           <div className="flex flex-col items-start space-y-6 md:space-y-8">
             <div className="w-12 h-px bg-gold"></div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brown-dark leading-tight tracking-tight">
-              Programa de
-              <span className="block text-gold mt-1">Consignaciones</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-brown-dark leading-tight tracking-tight">
+              Programa de <span className="text-gold">Consignaciones</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-xl">
               Vende tu instrumento a través de nuestra tienda sin complicaciones.
               Nosotros nos encargamos de todo mientras tú recibes una comisión justa.
             </p>
@@ -38,19 +37,19 @@ export function HeroConsignaciones() {
 
           {/* Right side - Key numbers */}
           <div className="relative">
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {[
                 { value: "90%", label: "Comisión para ti" },
-                { value: "2-4", label: "Semanas promedio" },
+                { value: "Pro", label: "Marketing profesional" },
                 { value: "1500+", label: "Instrumentos vendidos" },
                 { value: "100%", label: "Transparente" },
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="group bg-white border border-gold/10 hover:border-gold/30 p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 text-center"
+                  className="group bg-white p-2.5 md:p-3 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_2px_10px_0_rgba(107,86,53,0.06)] hover:shadow-[0_3px_16px_0_rgba(107,86,53,0.12)] text-center"
                 >
-                  <span className="block font-serif text-2xl md:text-3xl font-bold text-gold mb-2">{item.value}</span>
-                  <span className="text-xs md:text-sm text-charcoal/60 font-medium">{item.label}</span>
+                  <span className="block font-serif text-lg md:text-xl font-bold text-gold/70 group-hover:text-gold transition-colors duration-300 mb-0.5">{item.value}</span>
+                  <span className="text-[10px] md:text-xs text-charcoal/50 font-medium">{item.label}</span>
                 </div>
               ))}
             </div>

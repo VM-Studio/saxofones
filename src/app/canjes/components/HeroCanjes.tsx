@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function HeroCanjes() {
   return (
-    <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-16 md:pt-20">
+    <section className="relative min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] flex items-center bg-warm overflow-hidden pt-8 md:pt-10">
       {/* Modern geometric decorations */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-gold/5 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-gold/30 to-transparent"></div>
@@ -15,12 +15,11 @@ export function HeroCanjes() {
           <div className="flex flex-col items-start space-y-6 md:space-y-8">
             <div className="w-12 h-px bg-gold"></div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-brown-dark leading-tight tracking-tight">
-              Programa de
-              <span className="block text-gold mt-1">Canjes</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-brown-dark leading-tight tracking-tight">
+              Programa de <span className="text-gold">Canjes</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-lg md:text-xl text-charcoal/80 leading-relaxed max-w-xl">
               Intercambia tu saxofón actual por uno nuevo o usado en mejores condiciones.
               En DR BRASS ofrecemos los mejores valores en canjes del mercado.
             </p>
@@ -47,7 +46,7 @@ export function HeroCanjes() {
               ].map((step, i) => (
                 <div
                   key={i}
-                  className="group flex items-center gap-4 md:gap-6 bg-white border border-gold/10 hover:border-gold/30 p-4 md:p-5 transition-all duration-300 hover:-translate-y-0.5"
+                  className="group flex items-center gap-4 md:gap-6 bg-white border border-gold/10 hover:border-gold/30 p-3 md:p-4 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   <span className="font-serif text-gold text-lg md:text-xl font-bold tracking-wider min-w-10">{step.num}</span>
                   <div className="w-px h-6 bg-gold/20"></div>

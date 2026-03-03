@@ -33,8 +33,8 @@ module.exports = {
         drmatte: '#F5F1E8',
       },
       fontFamily: {
-        serif: ['Cinzel', 'Playfair Display', 'serif'],
-        sans: ['Montserrat', 'Open Sans', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['var(--font-cormorant)', 'Cormorant Garamond', 'serif'],
+        sans: ['var(--font-raleway)', 'Raleway', 'sans-serif'],
       },
       boxShadow: {
         dr: '0 4px 24px 0 rgba(139, 111, 71, 0.15)',

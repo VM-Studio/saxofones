@@ -33,26 +33,26 @@ export function ProcesoLutheria() {
         {/* Header */}
         <div className="mb-12 md:mb-16 text-center">
           <div className="w-12 h-px bg-gold mb-6 mx-auto"></div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brown-dark tracking-tight">
+          <h2 className="text-4xl sm:text-4xl md:text-5xl font-serif font-bold text-brown-dark tracking-tight">
             Cómo Trabajamos
           </h2>
         </div>
 
-        {/* Steps - horizontal on desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gold/10">
+        {/* Steps */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {pasos.map((paso, idx) => (
             <div
               key={idx}
-              className="group bg-white p-6 md:p-8 transition-all duration-300 hover:bg-cream-dark/30"
+              className="group bg-white p-4 md:p-8 shadow-[0_2px_12px_0_rgba(107,86,53,0.06)] hover:shadow-[0_4px_20px_0_rgba(107,86,53,0.12)] hover:-translate-y-1 transition-all duration-300"
             >
-              <span className="font-serif text-3xl md:text-4xl font-bold text-gold/20 group-hover:text-gold transition-colors duration-300">
+              <span className="font-serif text-2xl md:text-4xl font-bold text-gold/20 group-hover:text-gold/50 transition-colors duration-300">
                 {paso.num}
               </span>
 
-              <h3 className="text-base md:text-lg font-serif font-bold text-brown-dark mt-4 mb-2">
+              <h3 className="text-sm md:text-lg font-serif font-bold text-brown-dark mt-3 mb-1.5">
                 {paso.titulo}
               </h3>
-              <p className="text-xs md:text-sm text-charcoal/60 leading-relaxed">
+              <p className="text-xs md:text-sm text-charcoal/50 leading-relaxed">
                 {paso.descripcion}
               </p>
             </div>

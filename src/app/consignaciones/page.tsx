@@ -1,7 +1,5 @@
 import { HeroConsignaciones } from "./components/HeroConsignaciones";
-import { VentajasConsignaciones } from "./components/VentajasConsignaciones";
 import { ProcesoConsignaciones } from "./components/ProcesoConsignaciones";
-import { CTAConsignaciones } from "./components/CTAConsignaciones";
 
 export const metadata = {
   title: "Programa de Consignaciones | DR BRASS",
@@ -18,14 +16,8 @@ export default function ConsignacionesPage() {
       {/* Hero Section */}
       <HeroConsignaciones />
 
-      {/* Ventajas */}
-      <VentajasConsignaciones />
-
       {/* Proceso */}
       <ProcesoConsignaciones />
-
-      {/* CTA Final */}
-      <CTAConsignaciones />
     </main>
   );
 }

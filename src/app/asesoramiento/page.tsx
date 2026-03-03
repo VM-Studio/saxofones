@@ -1,6 +1,5 @@
 import { HeroAsesoramiento } from "./components/HeroAsesoramiento";
 import { ServiciosAsesoramiento } from "./components/ServiciosAsesoramiento";
-import { CTAAsesoramiento } from "./components/CTAAsesoramiento";
 
 export const metadata = {
   title: "Asesoramiento Profesional en Saxofones | DR BRASS",
@@ -19,9 +18,6 @@ export default function AsesoramientoPage() {
 
       {/* Servicios */}
       <ServiciosAsesoramiento />
-
-      {/* CTA Final */}
-      <CTAAsesoramiento />
     </main>
   );
 }

@@ -43,43 +43,30 @@ export function ProcesoConsignaciones() {
         {/* Header */}
         <div className="mb-12 md:mb-16 text-center">
           <div className="w-12 h-px bg-gold mb-6 mx-auto"></div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brown-dark tracking-tight mb-4">
+          <h2 className="text-4xl sm:text-4xl md:text-5xl font-serif font-bold text-brown-dark tracking-tight mb-4">
             Cómo Funciona la Consignación
           </h2>
         </div>
 
         {/* Steps grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-6">
           {pasos.map((paso, idx) => (
             <div
               key={idx}
-              className="group bg-white p-6 md:p-8 transition-all duration-300 hover:bg-cream-dark/30"
+              className="group bg-white p-4 md:p-6 transition-all duration-300 hover:-translate-y-1 shadow-[0_2px_12px_0_rgba(107,86,53,0.06)] hover:shadow-[0_4px_20px_0_rgba(107,86,53,0.12)]"
             >
-              <span className="font-serif text-2xl md:text-3xl font-bold text-gold/30 group-hover:text-gold transition-colors duration-300">
+              <span className="font-serif text-xl md:text-2xl font-bold text-gold/25 group-hover:text-gold/60 transition-colors duration-300">
                 0{paso.numero}
               </span>
 
-              <h3 className="text-lg font-serif font-bold text-brown-dark mt-3 mb-2">
+              <h3 className="text-sm md:text-base font-serif font-bold text-brown-dark mt-2 mb-1.5">
                 {paso.titulo}
               </h3>
-              <p className="text-sm text-charcoal/60 leading-relaxed">
+              <p className="text-xs md:text-sm text-charcoal/50 leading-relaxed">
                 {paso.descripcion}
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Info footer */}
-        <div className="mt-12 md:mt-16 bg-white p-6 md:p-8 border-t border-gold/10">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <span className="text-sm font-serif font-bold text-brown-dark">Tiempo promedio de venta</span>
-              <span className="block text-xs text-charcoal/50 mt-1">
-                Mantenemos tu instrumento en consignación por un período acordado. Si no se vende, lo devolvemos en perfecto estado.
-              </span>
-            </div>
-            <span className="font-serif text-2xl font-bold text-gold shrink-0">2-4 semanas</span>
-          </div>
         </div>
       </div>
     </section>
